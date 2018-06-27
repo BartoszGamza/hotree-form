@@ -1,14 +1,17 @@
 <template>
   <div id="app">
-    <header class="top">
+    <div class="top"></div>
       <div class="header">
-        <h1>title</h1>
+        <h1>New event</h1>
       </div>
-    </header>
+    <div class="grid">
+      <Form></Form>
+    </div>
   </div>
 </template>
 
 <script>
+import Form from './components/Form'
 export default {
   name: 'app',
   data () {
@@ -17,6 +20,7 @@ export default {
     }
   },
   components: {
+    Form
   }
 }
 </script>
@@ -25,20 +29,31 @@ export default {
 body
   font-family: 'Roboto', sans-serif
   font-size 15px
-  background-color #f8f8fa
+  background-color #f7f7f7
   margin 0
-  padding-top 25px
   color #afafaf
   overflow-y scroll
-
-.header
-  background-color white
-  padding-left 30%
+.top
   position fixed
+  background-color #1e3b68 
   z-index 999
-  height 25
+  height 15px
+  top 0
+  left 0
+  right 0
+.header
+  background-color #355990
+  color white
+  padding-left 15%
+  position fixed
+  padding-top 15px
+  height 72px
   top 0
   left 0
   right 0
   box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+.grid
+  position relative
+  max-width 800px
+  margin 0 auto
 </style>
