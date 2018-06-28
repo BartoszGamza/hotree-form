@@ -12,12 +12,28 @@ import Coordinator from './FormCards/Coordinator'
 import When from './FormCards/When'
 export default {
   data: () => ({
-
+    post: {
+      title: '',
+      description: '',
+      category_id: '',
+      paid_event: '',
+      event_fee: '',
+      reward: '',
+      date: '',
+      duration: '',
+      coordinator: {
+        email: '',
+        id: ''
+      }
+    }
   }),
   components: {
     About,
     Coordinator,
     When
+  },
+  created() {
+    this.$store.dispatch('getUser')
   }
 }
 </script>
