@@ -55,12 +55,13 @@ export default {
   background-color white
   border-radius 5px
 
+.card-form
+  padding-right 10%   
+
 .card-heading
   color #436598
   padding 15px 15px 0 15px
 
-.card-form
-  
 ul
   list-style none
 

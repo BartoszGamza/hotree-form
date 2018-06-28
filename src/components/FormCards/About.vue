@@ -13,6 +13,8 @@
           <li>
             <label for="desc">DESCRIPTION</label>
             <input type="text" id="desc" v-model="description" placeholder="Write about your event, be creative">
+            <div class="comment">Max length 140 characters</div>
+            <div class="counter">{{wordCount}}</div>
           <li>
             <label for="cat">CATEGORY</label>
             <select id="cat" v-model="category">
@@ -51,10 +53,24 @@ export default {
   computed: {
     categories () {
       return this.$store.getters.categories
+    },
+    wordCount () {
+      return 140 - this.description.length
     }
   },
   methods: {
   }
 }
 </script>
+
+<style lang="stylus">
+.comment
+  font-style italic
+  display inline-block
+.counter
+  font-style italic 
+  display inline-block
+  float right
+</style>
+
 
