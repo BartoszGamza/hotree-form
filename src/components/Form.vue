@@ -6,11 +6,32 @@
         <hr>
       </div>
       <div class="card-form">
-        <label for="title">TITLE</label>
-        <input type="text" id="title" placeholder="Make it short and clear">
-        <label for="desc">DESCRIPTION</label>
-        <input type="text" id="desc" placeholder="Write about your event, be creative">
-        
+        <ul>
+          <li>
+            <label for="title">TITLE</label>
+            <input type="text" id="title" placeholder="Make it short and clear">
+          </li>
+          <li>
+            <label for="desc">DESCRIPTION</label>
+            <input type="text" id="desc" placeholder="Write about your event, be creative">
+          </li>
+          <li>
+            <label for="cat">CATEGORY</label>
+            <select id="cat"></select>
+          </li>
+          <li>
+            <label>PAYMENT</label>
+            <input type="checkbox">
+            <span>Free event</span>
+            <input type="checkbox">
+            <span>Paid event</span>
+          </li>
+          <li>
+            <label for="reward">REWARD</label>
+            <input type="text" id="reward" placeholder="Number">
+            <span>Reward points for attendance</span>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="card">
@@ -19,7 +40,16 @@
         <hr>
       </div>
       <div class="card-form">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus provident sequi neque itaque eos perferendis doloremque sunt cupiditate amet, eum culpa quas delectus reprehenderit suscipit rem minima assumenda odio nemo!
+        <ul>
+          <li>
+            <label for="resp">RESPONSIBLE</label>
+            <select id="resp"></select>
+          </li>
+          <li>
+            <label for="email">EMAIL</label>
+            <input type="email" id="email" placeholder="Email">
+          </li>
+        </ul>
       </div>
     </div>
     <div class="card">
@@ -28,7 +58,23 @@
         <hr>
       </div>
       <div class="card-form">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus provident sequi neque itaque eos perferendis doloremque sunt cupiditate amet, eum culpa quas delectus reprehenderit suscipit rem minima assumenda odio nemo!
+        <ul>
+          <li>
+            <label for="time">STARTS ON</label>
+            <input type="text" id="time" placeholder="dd/mm/yyyy">
+            <span>at</span>
+            <input type="time">
+            <input type="checkbox">
+            <span>AM</span>
+            <input type="checkbox">
+            <span>PM</span>
+          </li>
+          <li>
+            <label for="dur">DURATION</label>
+            <input type="text" placeholder="Number" id="dur">
+            <span>hour</span>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -56,10 +102,13 @@ export default {
   border-radius 5px
 .card-heading
   color #436598
-  padding 15px
+  padding 15px 15px 0 15px
 
 .card-form
+  
+ul
+  list-style none
+li 
   padding 15px
-
 
 </style>
