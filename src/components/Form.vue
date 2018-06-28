@@ -13,18 +13,19 @@
           </li>
           <li>
             <label for="desc">DESCRIPTION</label>
-            <textarea id="desc" placeholder="Write about your event, be creative"></textarea>
-          </li>
+            <input type="text" id="desc" placeholder="Write about your event, be creative">
           <li>
             <label for="cat">CATEGORY</label>
             <select id="cat"></select>
           </li>
           <li>
             <label>PAYMENT</label>
-            <input type="checkbox">
+            <input type="radio">
             <span>Free event</span>
-            <input type="checkbox">
+            <input type="radio">
             <span>Paid event</span>
+            <input type="text" id="fee" placeholder="Fee">
+            <span>$</span>
           </li>
           <li>
             <label for="reward">REWARD</label>
@@ -61,12 +62,12 @@
         <ul>
           <li>
             <label for="time">STARTS ON</label>
-            <input type="text" id="time" placeholder="dd/mm/yyyy">
+            <input type="text" id="date" placeholder="dd/mm/yyyy">
             <span>at</span>
-            <input type="time">
-            <input type="checkbox">
+            <input type="text" id="time" placeholder="--:--">
+            <input type="radio">
             <span>AM</span>
-            <input type="checkbox">
+            <input type="radio">
             <span>PM</span>
           </li>
           <li>
@@ -90,6 +91,7 @@ export default {
 .container
   padding-top 87px
   padding-bottom 25px
+
 .card
   box-sizing border-box
   margin-left  auto
@@ -100,6 +102,7 @@ export default {
   box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
   background-color white
   border-radius 5px
+
 .card-heading
   color #436598
   padding 15px 15px 0 15px
@@ -108,14 +111,45 @@ export default {
   
 ul
   list-style none
+
 li 
   padding 15px
+
 #desc
   vertical-align top
+
 #title, #desc, #email, #resp, #cat
   display inline
   width 500px
+
+#title, #desc, #email, #resp, #cat, #reward, #time, #dur, #fee, #date
+  border 1px solid #d8d8da
+  border-radius 2px
+  background-color white
+  background-image none
+  height 25px
+  &:focus 
+    border 1px solid black -5%
+
+#reward, #fee, #dur, #time
+  width 60px
+
+::placeholder
+  color #d8d8da
+
+#desc 
+  height 150px
+
 label
   display inline-block
+  vertical-align middle
   width 20%
+
+span
+  vertical-align middle
+  margin 0 5px 0 5px
+
+hr
+  color #d8d8da
+  width 95%
 </style>

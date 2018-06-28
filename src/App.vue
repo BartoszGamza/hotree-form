@@ -44,6 +44,7 @@ body
 .header
   background-color #355990
   color white
+  z-index 10
   padding-left 15%
   position fixed
   padding-top 15px
