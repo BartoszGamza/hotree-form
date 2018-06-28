@@ -18,16 +18,15 @@
             <select id="cat" v-model="category">
               <option v-for="category in categories" :key="category.id">{{category.name}}</option>
             </select>
-            <button @click="seeCats">check</button>
           </li>
           <li>
             <label>PAYMENT</label>
-            <input type="radio">
+            <input type="radio" value="false" v-model="paid_event">
             <span>Free event</span>
-            <input type="radio">
+            <input type="radio" value="true" v-model="paid_event">
             <span>Paid event</span>
-            <input type="text" id="fee" v-model="fee" placeholder="Fee">
-            <span>$</span>
+            <input type="text" v-show="paid_event" id="fee" v-model="fee" placeholder="Fee">
+            <span v-show="paid_event">$</span>
           </li>
           <li>
             <label for="reward">REWARD</label>
@@ -45,7 +44,7 @@ export default {
     title: '',
     description: '',
     category: '',
-    payment: false,
+    paid_event: false,
     fee: '',
     reward: ''
   }),
@@ -55,9 +54,6 @@ export default {
     }
   },
   methods: {
-    seeCats () {
-      console.log(this.categories)
-    }
   }
 }
 </script>

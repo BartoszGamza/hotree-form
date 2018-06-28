@@ -14,11 +14,7 @@
 import Form from './components/Form'
 export default {
   name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  },
+  data: () => ({}),
   components: {
     Form
   }
