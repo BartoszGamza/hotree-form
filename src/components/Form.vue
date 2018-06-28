@@ -13,7 +13,7 @@
           </li>
           <li>
             <label for="desc">DESCRIPTION</label>
-            <input type="text" id="desc" placeholder="Write about your event, be creative">
+            <textarea id="desc" placeholder="Write about your event, be creative"></textarea>
           </li>
           <li>
             <label for="cat">CATEGORY</label>
@@ -110,5 +110,12 @@ ul
   list-style none
 li 
   padding 15px
-
+#desc
+  vertical-align top
+#title, #desc, #email, #resp, #cat
+  display inline
+  width 500px
+label
+  display inline-block
+  width 20%
 </style>
