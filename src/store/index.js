@@ -35,8 +35,8 @@ export const store = new Vuex.Store({
     }
   },
   getters: {
-    users (state) {
-      return state.usersList
+    users (state)  {
+     return state.usersList
     },
     categories (state) {
       return state.categories
