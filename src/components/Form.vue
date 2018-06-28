@@ -1,89 +1,24 @@
 <template>
   <div class="container">
-    <div class="card">
-      <div class="card-heading">
-        About
-        <hr>
-      </div>
-      <div class="card-form">
-        <ul>
-          <li>
-            <label for="title">TITLE</label>
-            <input type="text" id="title" placeholder="Make it short and clear">
-          </li>
-          <li>
-            <label for="desc">DESCRIPTION</label>
-            <input type="text" id="desc" placeholder="Write about your event, be creative">
-          <li>
-            <label for="cat">CATEGORY</label>
-            <select id="cat"></select>
-          </li>
-          <li>
-            <label>PAYMENT</label>
-            <input type="radio">
-            <span>Free event</span>
-            <input type="radio">
-            <span>Paid event</span>
-            <input type="text" id="fee" placeholder="Fee">
-            <span>$</span>
-          </li>
-          <li>
-            <label for="reward">REWARD</label>
-            <input type="text" id="reward" placeholder="Number">
-            <span>Reward points for attendance</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-heading">
-        Coordinator
-        <hr>
-      </div>
-      <div class="card-form">
-        <ul>
-          <li>
-            <label for="resp">RESPONSIBLE</label>
-            <select id="resp"></select>
-          </li>
-          <li>
-            <label for="email">EMAIL</label>
-            <input type="email" id="email" placeholder="Email">
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-heading">
-        When
-        <hr>
-      </div>
-      <div class="card-form">
-        <ul>
-          <li>
-            <label for="time">STARTS ON</label>
-            <input type="text" id="date" placeholder="dd/mm/yyyy">
-            <span>at</span>
-            <input type="text" id="time" placeholder="--:--">
-            <input type="radio">
-            <span>AM</span>
-            <input type="radio">
-            <span>PM</span>
-          </li>
-          <li>
-            <label for="dur">DURATION</label>
-            <input type="text" placeholder="Number" id="dur">
-            <span>hour</span>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <About></About>
+    <Coordinator></Coordinator>
+    <When></When>
   </div>
 </template>
 
 <script>
+import About from './FormCards/About'
+import Coordinator from './FormCards/Coordinator'
+import When from './FormCards/When'
 export default {
-  
+  data: () => ({
+
+  }),
+  components: {
+    About,
+    Coordinator,
+    When
+  }
 }
 </script>
 
