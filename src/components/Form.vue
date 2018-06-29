@@ -93,9 +93,10 @@ li
   background-color white
   background-image none
   -webkit-appearance none
+  -moz-appearance none 
   height 30px
   &:focus
-    border 1px solid #9eb0cc
+    border 1px solid #8ca2c2
     outline none 
 
 #resp, #cat
@@ -119,12 +120,10 @@ label
   display inline-block
   vertical-align middle
   width 120px
-  color #9eb0cc
-
+  color #8ca2c2
 span
   vertical-align middle
   margin 0 5px 0 5px
-  height 27px
   color #7c7c7c
 
 hr
@@ -147,4 +146,27 @@ hr
   content ' *'
   font-size 15px
   color #ff5252
+
+[type="radio"]
+  -moz-appearance none
+  -webkit-appearance none
+  outline none
+  display inline-block
+  vertical-align middle
+  width 20px
+  height 20px
+  border 1px solid #8ca2c2
+  border-radius 10px
+  text-align center
+  padding-top 3px
+  
+[type ="radio"]:checked:after
+  content ''
+  width 10px
+  height 10px
+  border-radius 5px
+  background-color #8ca2c2
+  display inline-block
+  outline none
+    
 </style>
