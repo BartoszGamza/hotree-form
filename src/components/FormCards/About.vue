@@ -65,8 +65,10 @@ export default {
 
 <style lang="stylus">
 .comment
+  position sticky
   font-style italic
   display inline-block
+  
 .counter
   font-style italic 
   display inline-block

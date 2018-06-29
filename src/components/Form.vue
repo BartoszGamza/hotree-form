@@ -54,35 +54,40 @@ export default {
   box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
   background-color white
   border-radius 5px
+  padding 20px 40px 20px 40px
+
 
 .card-form
-  padding-right 10%   
+  margin-left  auto
+  margin-right auto
 
 .card-heading
+  font-size 25px
   color #436598
-  padding 15px 15px 0 15px
 
 ul
   list-style none
+  padding 0px
 
 li 
-  padding 15px
+  padding 15px 0 15px 0
 
 #desc
   vertical-align top
 
 #title, #desc, #email, #resp, #cat
   display inline
-  width 500px
+  width 450px
 
 #title, #desc, #email, #resp, #cat, #reward, #time, #dur, #fee, #date
-  border 1px solid #d8d8da
+  display inline-block
+  border 2px solid #d8d8da
   border-radius 2px
   background-color white
   background-image none
   height 25px
-  &:focus 
-    border 1px solid black -5%
+  &:focus
+    border 2px solid #436598
 
 #reward, #fee, #dur, #time
   width 60px
@@ -96,13 +101,13 @@ li
 label
   display inline-block
   vertical-align middle
-  width 20%
+  width 120px
+  height 25px
 
 span
   vertical-align middle
   margin 0 5px 0 5px
 
 hr
-  color #d8d8da
-  width 95%
+  opacity 80%
 </style>
