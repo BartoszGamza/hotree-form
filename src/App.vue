@@ -5,18 +5,23 @@
         <h1>New event</h1>
       </div>
     <div class="grid">
-      <Form></Form>
+      <Alert v-if="submit"></Alert>
+      <Form v-else></Form>
     </div>
   </div>
 </template>
 
 <script>
+import Alert from './components/Alert'
 import Form from './components/Form'
 export default {
   name: 'app',
-  data: () => ({}),
+  data: () => ({
+    submit: true
+  }),
   components: {
-    Form
+    Form,
+    Alert
   }
 }
 </script>
@@ -27,7 +32,7 @@ body
   font-size 15px
   background-color #f7f7f7
   margin 0
-  color #afafaf
+  color #7c7c7c
   overflow-y scroll
 .top
   position fixed

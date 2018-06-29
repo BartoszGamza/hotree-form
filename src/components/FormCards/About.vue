@@ -41,7 +41,6 @@
             <span>Reward points for attendance</span>
           </div>
         </div>
-      </div>
     </div>
 </template>
 

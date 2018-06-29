@@ -59,7 +59,6 @@ export default {
   border-radius 5px
   padding 20px 40px 5px 40px
 
-
 .card-form
   margin-left  auto
   margin-right auto
@@ -121,6 +120,7 @@ label
   vertical-align middle
   width 120px
   color #8ca2c2
+
 span
   vertical-align middle
   margin 0 5px 0 5px
@@ -158,7 +158,7 @@ hr
   border 1px solid #8ca2c2
   border-radius 10px
   text-align center
-  padding-top 3px
+  position relative
   
 [type ="radio"]:checked:after
   content ''
@@ -168,5 +168,9 @@ hr
   background-color #8ca2c2
   display inline-block
   outline none
+  position absolute
+  left 50%
+  top 50%
+  transform translate(-50%, -50%)
     
 </style>
