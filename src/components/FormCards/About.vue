@@ -28,12 +28,12 @@
           </div>
           <div class="line">
             <label>PAYMENT</label>
-            <input type="radio" value="false" v-model="paid_event">
+            <input type="radio" value="false" v-model="paid_event" @click="show = false">
             <span>Free event</span>
-            <input type="radio" value="true" v-model="paid_event">
+            <input type="radio" value="true" v-model="paid_event" @click="show = true">
             <span>Paid event</span>
-            <input type="text" v-show="paid_event" id="fee" v-model="fee" placeholder="Fee">
-            <span v-show="paid_event">$</span>
+            <input type="text" v-show="show" id="fee" v-model="fee" placeholder="Fee">
+            <span v-show="show">$</span>
           </div>
           <div class="line">
             <label for="reward">REWARD</label>
@@ -61,6 +61,11 @@ export default {
     },
     wordCount () {
       return 140 - this.description.length
+    }
+  },
+  watch: {
+    show () {
+      return false
     }
   },
   methods: {

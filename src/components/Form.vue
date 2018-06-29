@@ -79,7 +79,7 @@ li
   padding 15px 0 15px 0
   vertical-align middle
 
-#title, #desc, #email, #resp, #cat
+#title, #desc, #email
   display inline
   width 440px
 
@@ -97,6 +97,10 @@ li
   &:focus
     border 1px solid #9eb0cc
     outline none 
+
+#resp, #cat
+  width 448px
+  height 34px
 
 #reward, #fee, #dur, #time
   width 60px

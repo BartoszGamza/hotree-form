@@ -53,4 +53,6 @@ body
   position relative
   max-width 800px
   margin 0 auto
+h1
+  font-weight 100 
 </style>
