@@ -3,6 +3,9 @@
     <About></About>
     <Coordinator></Coordinator>
     <When></When>
+    <div class="submit">
+      <button class="publish">PUBLISH EVENT</button>
+    </div>
   </div>
 </template>
 
@@ -54,7 +57,7 @@ export default {
   box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
   background-color white
   border-radius 5px
-  padding 20px 40px 20px 40px
+  padding 20px 40px 5px 40px
 
 
 .card-form
@@ -72,22 +75,28 @@ ul
 li 
   padding 15px 0 15px 0
 
-#desc
-  vertical-align top
+.line
+  padding 15px 0 15px 0
+  vertical-align middle
 
 #title, #desc, #email, #resp, #cat
   display inline
-  width 450px
+  width 440px
 
 #title, #desc, #email, #resp, #cat, #reward, #time, #dur, #fee, #date
+  font-size 15px
+  color #7c7c7c
+  padding-left 5px
   display inline-block
-  border 2px solid #d8d8da
+  border 1px solid #d8d8da
   border-radius 2px
   background-color white
   background-image none
-  height 25px
+  -webkit-appearance none
+  height 30px
   &:focus
-    border 2px solid #436598
+    border 1px solid #9eb0cc
+    outline none 
 
 #reward, #fee, #dur, #time
   width 60px
@@ -96,18 +105,42 @@ li
   color #d8d8da
 
 #desc 
-  height 150px
+  height 120px
+  width 436px
+  vertical-align top
+  resize none
+  padding 5px 
 
 label
   display inline-block
   vertical-align middle
   width 120px
-  height 25px
+  color #9eb0cc
 
 span
   vertical-align middle
   margin 0 5px 0 5px
+  height 27px
+  color #7c7c7c
 
 hr
   opacity 80%
+
+.submit
+  text-align center
+
+.publish
+  box-sizing border-box
+  text-align center
+  background-color #ff8e1d
+  width 164px
+  height 50px
+  color white
+  font-size 13px
+  border none
+
+.req:after
+  content ' *'
+  font-size 15px
+  color #ff5252
 </style>

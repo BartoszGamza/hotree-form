@@ -5,9 +5,9 @@
         <hr>
       </div>
       <div class="card-form">
-        <ul>
-          <li>
-            <label for="time">STARTS ON</label>
+        
+          <div class="line">
+            <label for="time" class="req">STARTS ON</label>
             <input type="text" id="date" v-model="date" placeholder="dd/mm/yyyy">
             <span>at</span>
             <input type="text" id="time" v-model="time" placeholder="--:--">
@@ -15,13 +15,12 @@
             <span>AM</span>
             <input type="radio" value="PM" v-model="AMPM">
             <span>PM</span>
-          </li>
-          <li>
+          </div>
+          <div class="line">
             <label for="dur">DURATION</label>
             <input type="text" id="dur" v-model="duration" placeholder="Number" >
             <span>hour</span>
-          </li>
-        </ul>
+          </div>
       </div>
     </div>
 </template>
@@ -36,3 +35,8 @@ export default {
   })
 }
 </script>
+
+<style lang="stylus">
+.inputarea
+  display inline
+</style>

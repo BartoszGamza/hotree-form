@@ -7,7 +7,7 @@
       <div class="card-form">
         <ul>
           <li>
-            <label for="resp">RESPONSIBLE</label>
+            <label for="resp" class="req">RESPONSIBLE</label>
             <select id="resp" v-model="coordinator.name">
               <option v-for="user in users" :key="user.id">{{user.name}}</option>
             </select>
