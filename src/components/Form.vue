@@ -110,8 +110,9 @@ li
   width 448px
   height 34px
 
-#reward, #fee, #dur, #time
-  width 60px
+#reward, #fee, #dur
+  width 70px
+  text-align center
 
 ::placeholder, ::-webkit-input-placeholder
   color #d8d8da
