@@ -102,7 +102,9 @@ li
   height 30px
   &:focus
     border 1px solid #8ca2c2
-    outline none 
+    outline none
+  &.invalid
+    border 1px solid red
 
 #resp, #cat
   width 448px
@@ -178,5 +180,5 @@ hr
   left 50%
   top 50%
   transform translate(-50%, -50%)
-    
+
 </style>
