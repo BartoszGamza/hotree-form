@@ -1,6 +1,6 @@
 # hotree-form
 
-> Frontend task for Montereail. Built on VueJs framework, based on webpack-simple template
+> Frontend task for Montereail. Built on VueJs framework, based on webpack-simple template, Vuex and Stylus.
 
 ## Build Setup
 

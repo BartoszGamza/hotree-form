@@ -5,23 +5,20 @@
         <h1>New event</h1>
       </div>
     <div class="grid">
-      <Alert v-if="submit"></Alert>
-      <Form v-else></Form>
+      <Form></Form>
     </div>
   </div>
 </template>
 
 <script>
-import Alert from './components/Alert'
+
 import Form from './components/Form'
 export default {
   name: 'app',
   data: () => ({
-    submit: true
   }),
   components: {
-    Form,
-    Alert
+    Form
   }
 }
 </script>

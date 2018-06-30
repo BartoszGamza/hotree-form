@@ -1,15 +1,19 @@
 <template>
   <div class="container">
-    <About></About>
-    <Coordinator></Coordinator>
-    <When></When>
-    <div class="submit">
-      <button class="publish">PUBLISH EVENT</button>
+    <Alert v-if="submit"></Alert>
+    <div v-else>
+      <About></About>
+      <Coordinator></Coordinator>
+      <When></When>
+      <div class="submit">
+        <button class="publish">PUBLISH EVENT</button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Alert from './Alert'
 import About from './FormCards/About'
 import Coordinator from './FormCards/Coordinator'
 import When from './FormCards/When'
@@ -28,12 +32,14 @@ export default {
         email: '',
         id: ''
       }
-    }
+    },
+    submit: false
   }),
   components: {
     About,
     Coordinator,
-    When
+    When,
+    Alert
   },
   created() {
     this.$store.dispatch('getUser')
@@ -85,7 +91,7 @@ li
 #title, #desc, #email, #resp, #cat, #reward, #time, #dur, #fee, #date
   font-size 15px
   color #7c7c7c
-  padding-left 5px
+  padding 0px 7px 0 7px
   display inline-block
   border 1px solid #d8d8da
   border-radius 2px

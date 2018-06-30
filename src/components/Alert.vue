@@ -1,5 +1,4 @@
 <template>
-  <div class="container">
     <div class="alert">
       <div class="alert-heading">
         Success
@@ -8,7 +7,6 @@
         Event has been created.
       </div>
     </div>
-  </div>
 </template>
 
 <script>
