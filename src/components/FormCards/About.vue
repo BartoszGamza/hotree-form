@@ -6,12 +6,29 @@
       </div>
       <div class="card-form">
           <div class="line">
-            <label for="title" class="req">TITLE</label>
-            <input type="text" id="title" v-model="title" placeholder="Make it short and clear">
+            <label for="title" :class="{required: $v.title.$invalid}">TITLE</label>
+            <input 
+              type="text"
+              id="title"
+              placeholder="Make it short and clear"
+              v-model="title"
+              @blur="$v.title.$touch()"
+              :class="{invalid: $v.title.$error}"
+              >
           </div>
           <div class="line">
-            <label for="desc" class="req">DESCRIPTION</label>
-            <textarea name="desc" id="desc" v-model="description" placeholder="Write about your event, be creative"></textarea>
+            <label for="desc" :class="{required: $v.description.$invalid}">DESCRIPTION</label>
+            <textarea 
+              name="desc" 
+              id="desc"
+              maxlength="140"
+              placeholder="Write about your event, be creative"
+              v-model="description"
+              @blur="$v.description.$touch()"
+              :class="{invalid: $v.description.$error}"
+              >
+              
+              </textarea>
             <div class="bottomline">
               <div class="comment">Max length 140 characters</div>
               <div class="counter">{{wordCount}}</div>
@@ -19,7 +36,11 @@
           </div>
           <div class="line">
             <label for="cat">CATEGORY</label>
-            <select id="cat" v-model="category">
+            <select
+              id="cat"
+              v-model="category"
+              >
+              <option value="" disabled selected>Select category</option>
               <option v-for="category in categories" :key="category.id">{{category.name}}</option>
             </select>
             <div class="bottomline">
@@ -27,17 +48,32 @@
             </div>
           </div>
           <div class="line">
-            <label>PAYMENT</label>
+            <label :class="{required: $v.fee.$invalid && show}">PAYMENT</label>
             <input type="radio" value="false" v-model="paid_event" @click="show = false">
             <span>Free event</span>
             <input type="radio" value="true" v-model="paid_event" @click="show = true">
             <span>Paid event</span>
-            <input type="text" v-show="show" id="fee" v-model="fee" placeholder="Fee">
+            <input 
+              type="number" 
+              v-show="show" 
+              id="fee"
+              placeholder="Fee"
+              v-model="fee"
+              @input="$v.fee.$touch()" 
+              :class="{invalid: $v.fee.$error}"
+              >
             <span v-show="show">$</span>
           </div>
           <div class="line">
             <label for="reward">REWARD</label>
-            <input type="text" id="reward" v-model="reward" placeholder="Number">
+            <input 
+              type="number" 
+              id="reward"
+              placeholder="Number"
+              v-model="reward" 
+              @blur="$v.reward.$touch()" 
+              :class="{invalid: $v.reward.$error}"
+              >
             <span>Reward points for attendance</span>
           </div>
         </div>
@@ -45,6 +81,7 @@
 </template>
 
 <script>
+import { required, requiredIf, between, numeric, maxValue } from 'vuelidate/lib/validators'
 export default {
   data: () => ({
     title: '',
@@ -68,6 +105,21 @@ export default {
     }
   },
   methods: {
+  },
+  validations: {
+    title: {
+      required
+    },
+    description: {
+      required
+    },
+    fee: {
+      required: requiredIf('show'),
+      fee: between(1, 100)
+    },
+    reward: {
+      reward: between(0, 100)
+    }
   }
 }
 </script>

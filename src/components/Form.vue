@@ -113,7 +113,7 @@ li
 #reward, #fee, #dur, #time
   width 60px
 
-::placeholder
+::placeholder, ::-webkit-input-placeholder
   color #d8d8da
 
 #desc 
@@ -150,7 +150,7 @@ hr
   font-size 13px
   border none
 
-.req:after
+.required:after
   content ' *'
   font-size 15px
   color #ff5252

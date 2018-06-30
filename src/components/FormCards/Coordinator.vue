@@ -7,14 +7,17 @@
       <div class="card-form">
         <ul>
           <li>
-            <label for="resp" class="req">RESPONSIBLE</label>
+            <label for="resp" :class="{required: $v.name.$invalid}">RESPONSIBLE</label>
             <select 
               id="resp" 
-              v-model="name">
+              v-model="name"
+              @blur="$v.name.$touch()"
+              :class="{invalid: $v.name.$error}"
+              >
               <option 
                 v-for="user in users" 
                 :key="user.id">
-                {{user.name}}
+                {{user.name +' '+ user.lastname}}
               </option>
             </select>
           </li>
@@ -35,7 +38,7 @@
 </template>
 
 <script>
-import { email } from 'vuelidate/lib/validators'
+import { email, required } from 'vuelidate/lib/validators'
 export default {
   data: () => ({
     name: '',
@@ -49,6 +52,9 @@ export default {
   validations: {
     email: {
       email
+    },
+    name: {
+      required
     }
   }
 }

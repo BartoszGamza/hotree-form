@@ -7,10 +7,22 @@
       <div class="card-form">
         
           <div class="line">
-            <label for="time" class="req">STARTS ON</label>
-            <input type="text" id="date" v-model="date" placeholder="dd/mm/yyyy">
+            <label for="time" :class="{required: $v.date.$invalid}">STARTS ON</label>
+            <input 
+              type="date" 
+              id="date" 
+              v-model="date"
+              @blur="$v.date.$touch()"
+              :class="{invalid: $v.date.$error}"
+              >
             <span>at</span>
-            <input type="text" id="time" v-model="time" placeholder="--:--">
+            <input 
+              type="time"
+              id="time" 
+              v-model="time"
+              @blur="$v.time.$touch()"
+              :class="{invalid: $v.time.$error}"
+              >
             <input type="radio" value="AM" v-model="AMPM">
             <span>AM</span>
             <input type="radio" value="PM" v-model="AMPM">
@@ -18,7 +30,13 @@
           </div>
           <div class="line">
             <label for="dur">DURATION</label>
-            <input type="text" id="dur" v-model="duration" placeholder="Number" >
+            <input 
+              type="number" 
+              id="dur" v-model="duration" 
+              placeholder="Number"
+              @input="$v.duration.$touch()"
+              :class="{invalid: $v.duration.$error}"
+              >
             <span>hour</span>
           </div>
       </div>
@@ -26,17 +44,28 @@
 </template>
 
 <script>
+import { required, between} from 'vuelidate/lib/validators'
 export default {
   data: () => ({
     date: '',
     time: '',
     AMPM: 'AM',
     duration: ''
-  })
+  }),
+  validations: {
+    date: {
+      required
+    },
+    time: {
+      required
+    },
+    duration: {
+      duration: between(0, 12)
+    }
+  }
 }
 </script>
 
 <style lang="stylus">
-.inputarea
-  display inline
+
 </style>
