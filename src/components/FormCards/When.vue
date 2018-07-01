@@ -7,7 +7,7 @@
       <div class="card-form">
         
           <div class="line">
-            <label for="time" :class="{required: $v.date.$invalid || $v.time.$invalid }">STARTS ON</label>
+            <label for="time" :class="{required: $v.date.$invalid || $v.time.$invalid, invalid: $v.date.$error || $v.time.$error }">STARTS ON</label>
             <input 
               type="date" 
               id="date"
@@ -29,7 +29,7 @@
             <span>AM</span>
             <input type="radio" value="PM" v-model="AMPM">
             <span>PM</span>
-            <ErrorLabel message="Provide date and time"></ErrorLabel>
+            <ErrorLabel v-if="$v.date.$error || $v.time.$error" message="Provide date and time"></ErrorLabel>
           </div>
           <div class="line">
             <label for="dur">DURATION</label>

@@ -6,11 +6,7 @@
 
 <script>
 export default {
-  name: 'testname',
-  props: ['message'],
-  data: () => ({
-    message
-  })
+  props: ['message']
 }
 </script>
 

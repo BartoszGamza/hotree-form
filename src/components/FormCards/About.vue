@@ -6,7 +6,7 @@
       </div>
       <div class="card-form">
           <div class="line">
-            <label for="title" :class="{required: $v.title.$invalid}">TITLE</label>
+            <label for="title" :class="{required: $v.title.$invalid, invalid: $v.title.$error}">TITLE</label>
             <input 
               type="text"
               id="title"
@@ -15,10 +15,10 @@
               @blur="$v.title.$touch()"
               :class="{invalid: $v.title.$error}"
               >
-              <ErrorLabel message="Title cannot be empty"></ErrorLabel>
+              <ErrorLabel v-if="$v.title.$error" message="Title cannot be empty"></ErrorLabel>
           </div>
           <div class="line">
-            <label for="desc" :class="{required: $v.description.$invalid}">DESCRIPTION</label>
+            <label for="desc" :class="{required: $v.description.$invalid, invalid: $v.description.$error}">DESCRIPTION</label>
             <textarea 
               name="desc" 
               id="desc"
@@ -29,7 +29,7 @@
               :class="{invalid: $v.description.$error}"
               >
               </textarea>
-              <ErrorLabel message="Fill the description"></ErrorLabel>
+              <ErrorLabel v-if="$v.description.$error" message="Fill the description"></ErrorLabel>
             <div class="bottomline">
               <div class="comment">Max length 140 characters</div>
               <div class="counter">{{wordCount}}</div>
@@ -49,7 +49,7 @@
             </div>
           </div>
           <div class="line">
-            <label :class="{required: $v.fee.$invalid && show}">PAYMENT</label>
+            <label :class="{required: $v.fee.$invalid || show, invalid: $v.title.$error}">PAYMENT</label>
             <input type="radio" value="false" v-model="paid_event" @click="show = false">
             <span>Free event</span>
             <input type="radio" value="true" v-model="paid_event" @click="show = true">
@@ -64,7 +64,7 @@
               :class="{invalid: $v.fee.$error}"
               >
             <span v-show="show">$</span>
-            <ErrorLabel message="Please provide fee for event"></ErrorLabel>
+            <ErrorLabel v-if="$v.fee.$error" message="Please provide fee for event"></ErrorLabel>
           </div>
           <div class="line">
             <label for="reward">REWARD</label>

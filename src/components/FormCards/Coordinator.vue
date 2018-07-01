@@ -24,9 +24,6 @@
                 </option>
               </optgroup>
             </select>
-            <div class="errorLabel">
-              Title cannot be empty
-            </div>
           </li>
           <li>
             <label for="email">EMAIL</label>

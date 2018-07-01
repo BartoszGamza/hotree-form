@@ -104,7 +104,7 @@ li
     border 1px solid #8ca2c2
     outline none
   &.invalid
-    border 1px solid red
+    border 1px solid #ffb2b2
 
 #resp, #cat
   width 448px
@@ -129,6 +129,8 @@ label
   vertical-align middle
   width 120px
   color #8ca2c2
+  &.invalid
+    color #ffb2b2
 
 span
   vertical-align middle
@@ -154,7 +156,7 @@ hr
 .required:after
   content ' *'
   font-size 15px
-  color #ff5252
+  color #ffb2b2
 
 [type="radio"]
   -moz-appearance none
