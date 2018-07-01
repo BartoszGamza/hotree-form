@@ -8,10 +8,10 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     currentUser: {
-      id: 3, //Hardcoded, given in task description.
+      id: 3,
       email: '',
       name: '',
-      lastName:''
+      lastname:''
     },
     usersList: [],
     categories: []
@@ -20,14 +20,23 @@ export const store = new Vuex.Store({
     setUsers (state, payload) {
       state.usersList = payload
     },
+    setUser (state, payload) {
+      state.currentUser.email = payload.email
+      state.currentUser.name = payload.name
+      state.currentUser.lastname = payload.lastname
+    },
     setCategories (state, payload) {
       state.categories = payload
     }
   },
   actions: {
-    getUser ({commit}, state) {
+    getUser ({commit, state}) {
       let obj = Employes
-      commit('setUsers', obj)
+      const userId = state.currentUser.id
+      const user = obj.find( e => e.id === userId)
+      let users = obj.filter( x => x.id !== userId)
+      commit('setUsers', users)
+      commit('setUser', user)
     },
     getCategories ({commit}) {
       let obj = Categories

@@ -7,18 +7,22 @@
       <div class="card-form">
         <ul>
           <li>
-            <label for="resp" :class="{required: $v.name.$invalid}">RESPONSIBLE</label>
+            <label for="resp">RESPONSIBLE</label>
             <select 
               id="resp" 
               v-model="name"
-              @blur="$v.name.$touch()"
-              :class="{invalid: $v.name.$error}"
               >
-              <option 
+              <optgroup label="Me">
+                <option value="" >{{currentUser.name + ' ' +currentUser.lastname}}</option>
+              </optgroup>
+              <optgroup label="Others">
+                <option 
                 v-for="user in users" 
-                :key="user.id">
+                :key="user.id"
+                >
                 {{user.name +' '+ user.lastname}}
-              </option>
+                </option>
+              </optgroup>
             </select>
           </li>
           <li>
@@ -31,6 +35,7 @@
               v-model="email"
               :class="{invalid: $v.email.$error}"
               >
+              <div>{{currentUser}}</div>
           </li>
         </ul>
       </div>
@@ -47,14 +52,14 @@ export default {
   computed: {
     users () {
       return this.$store.getters.users
-    }
+    },
+    currentUser () {
+      return this.$store.getters.currentUser
+    },
   },
   validations: {
     email: {
       email
-    },
-    name: {
-      required
     }
   }
 }
