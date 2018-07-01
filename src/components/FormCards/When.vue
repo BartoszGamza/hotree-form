@@ -15,13 +15,13 @@
               @blur="$v.date.$touch()"
               :class="{invalid: $v.date.$error}"
               >
-              <div>{{$v.date}}</div>
-              <div>{{date}}</div>
             <span>at</span>
             <input 
               type="time"
               id="time" 
               v-model="time"
+              min="00:00"
+              max="12:00"
               @blur="$v.time.$touch()"
               :class="{invalid: $v.time.$error}"
               >
@@ -47,8 +47,9 @@
 
 <script>
 import moment from 'moment'
-import { required, between, minValue} from 'vuelidate/lib/validators'
+import { required, between, helpers} from 'vuelidate/lib/validators'
 export const minDate = (value) => moment(value, "YYYY-MM-DD", true).isSameOrAfter(moment().format("YYYY-MM-DD"))
+export const timeFormat = helpers.regex('timeFormat', /^(1[0-2]|0?[1-9]):[0-5][0-9]*$/)
 export default {
   data: () => ({
     date: '',
@@ -62,14 +63,22 @@ export default {
       minDate
     },
     time: {
-      required
+      required,
+      timeFormat
     },
     duration: {
       duration: between(0, 12)
     }
   },
-  methods: {
-
+  computed: {
+    toDateTime () {
+      let TimeString = this.time + ':00' + ' ' + this.AMPM
+      let TimeFormat = moment(TimeString, "hh:mm A").format("HH:mm")
+      return this.date + 'T' + TimeFormat
+    },
+    toSeconds () {
+      return this.duration * 3600
+    }
   }
 }
 </script>
