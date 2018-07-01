@@ -114,6 +114,9 @@ li
   width 70px
   text-align center
 
+#time
+  width 60px
+
 ::placeholder, ::-webkit-input-placeholder
   color #d8d8da
 

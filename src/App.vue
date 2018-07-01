@@ -29,7 +29,7 @@ body
   font-size 15px
   background-color #f7f7f7
   margin 0
-  color #7c7c7c
+  color #d8d8da
   overflow-y scroll
 .top
   position fixed

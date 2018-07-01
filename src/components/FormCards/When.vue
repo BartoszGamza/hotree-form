@@ -9,16 +9,18 @@
           <div class="line">
             <label for="time" :class="{required: $v.date.$invalid}">STARTS ON</label>
             <input 
-              type="date" 
+              type="text" 
               id="date"
+              placeholder="dd/mm/yyyy"
               v-model="date"
               @blur="$v.date.$touch()"
               :class="{invalid: $v.date.$error}"
               >
             <span>at</span>
             <input 
-              type="time"
-              id="time" 
+              type="text"
+              id="time"
+              placeholder="--:--" 
               v-model="time"
               min="00:00"
               max="12:00"
@@ -48,7 +50,7 @@
 <script>
 import moment from 'moment'
 import { required, between, helpers} from 'vuelidate/lib/validators'
-export const minDate = (value) => moment(value, "YYYY-MM-DD", true).isSameOrAfter(moment().format("YYYY-MM-DD"))
+export const minDate = (value) => moment(value, "DD/MM/YYYY", true).isSameOrAfter(moment().format("DD/MM/YYYY"))
 export const timeFormat = helpers.regex('timeFormat', /^(1[0-2]|0?[1-9]):[0-5][0-9]*$/)
 export default {
   data: () => ({
@@ -83,6 +85,3 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-
-</style>
