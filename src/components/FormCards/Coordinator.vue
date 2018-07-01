@@ -8,22 +8,20 @@
         <ul>
           <li>
             <label for="resp">RESPONSIBLE</label>
-            <select 
+            <select
               id="resp" 
               v-model="name"
               >
-              <optgroup label="Me">
-                <option value="" >{{currentUser.name + ' ' +currentUser.lastname}}</option>
-              </optgroup>
-              <optgroup label="Others">
+                <option selected>{{currentUser}}</option>
                 <option 
                 v-for="user in users" 
                 :key="user.id"
                 >
                 {{user.name +' '+ user.lastname}}
                 </option>
-              </optgroup>
             </select>
+            <div>name:{{name}}</div>
+            <div>current {{currentUser}}</div>
           </li>
           <li>
             <label for="email">EMAIL</label>
@@ -35,7 +33,6 @@
               v-model="email"
               :class="{invalid: $v.email.$error}"
               >
-              <div>{{currentUser}}</div>
           </li>
         </ul>
       </div>
@@ -46,16 +43,17 @@
 import { email, required } from 'vuelidate/lib/validators'
 export default {
   data: () => ({
-    name: '',
-    email: ''         
+    name: 'Walter Nelson',
+    email: '',
+    selected: true         
   }),
   computed: {
     users () {
       return this.$store.getters.users
     },
     currentUser () {
-      return this.$store.getters.currentUser
-    },
+      return this.$store.getters.currentUser.name + ' ' + this.$store.getters.currentUser.lastname
+    }
   },
   validations: {
     email: {
