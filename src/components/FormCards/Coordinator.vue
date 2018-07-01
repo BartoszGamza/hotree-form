@@ -12,16 +12,21 @@
               id="resp" 
               v-model="name"
               >
+              <optgroup label="Me">
                 <option selected>{{currentUser}}</option>
+              </optgroup>
+              <optgroup label="Others">
                 <option 
                 v-for="user in users" 
                 :key="user.id"
                 >
                 {{user.name +' '+ user.lastname}}
                 </option>
+              </optgroup>
             </select>
-            <div>name:{{name}}</div>
-            <div>current {{currentUser}}</div>
+            <div class="errorLabel">
+              Title cannot be empty
+            </div>
           </li>
           <li>
             <label for="email">EMAIL</label>
@@ -44,8 +49,7 @@ import { email, required } from 'vuelidate/lib/validators'
 export default {
   data: () => ({
     name: 'Walter Nelson',
-    email: '',
-    selected: true         
+    email: ''         
   }),
   computed: {
     users () {

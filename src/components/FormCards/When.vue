@@ -29,6 +29,7 @@
             <span>AM</span>
             <input type="radio" value="PM" v-model="AMPM">
             <span>PM</span>
+            <ErrorLabel message="Provide date and time"></ErrorLabel>
           </div>
           <div class="line">
             <label for="dur">DURATION</label>
@@ -46,6 +47,7 @@
 </template>
 
 <script>
+import ErrorLabel from '../../components/ErrorLabel'
 import moment from 'moment'
 import { required, between, helpers} from 'vuelidate/lib/validators'
 export const minDate = (value) => moment(value, "YYYY-MM-DD", true).isSameOrAfter(moment().format("YYYY-MM-DD"))
@@ -57,6 +59,9 @@ export default {
     AMPM: 'AM',
     duration: ''
   }),
+  components: {
+      ErrorLabel
+    },
   validations: {
     date: {
       required,

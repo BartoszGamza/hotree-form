@@ -15,6 +15,7 @@
               @blur="$v.title.$touch()"
               :class="{invalid: $v.title.$error}"
               >
+              <ErrorLabel message="Title cannot be empty"></ErrorLabel>
           </div>
           <div class="line">
             <label for="desc" :class="{required: $v.description.$invalid}">DESCRIPTION</label>
@@ -27,8 +28,8 @@
               @blur="$v.description.$touch()"
               :class="{invalid: $v.description.$error}"
               >
-              
               </textarea>
+              <ErrorLabel message="Fill the description"></ErrorLabel>
             <div class="bottomline">
               <div class="comment">Max length 140 characters</div>
               <div class="counter">{{wordCount}}</div>
@@ -63,6 +64,7 @@
               :class="{invalid: $v.fee.$error}"
               >
             <span v-show="show">$</span>
+            <ErrorLabel message="Please provide fee for event"></ErrorLabel>
           </div>
           <div class="line">
             <label for="reward">REWARD</label>
@@ -81,6 +83,7 @@
 </template>
 
 <script>
+import ErrorLabel from '../../components/ErrorLabel'
 import { required, requiredIf, between, numeric, maxValue } from 'vuelidate/lib/validators'
 export default {
   data: () => ({
@@ -104,8 +107,9 @@ export default {
       return false
     }
   },
-  methods: {
-  },
+  components: {
+      ErrorLabel
+    },
   validations: {
     title: {
       required
