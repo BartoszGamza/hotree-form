@@ -10,11 +10,13 @@
             <label for="time" :class="{required: $v.date.$invalid}">STARTS ON</label>
             <input 
               type="date" 
-              id="date" 
+              id="date"
               v-model="date"
               @blur="$v.date.$touch()"
               :class="{invalid: $v.date.$error}"
               >
+              <div>{{$v.date}}</div>
+              <div>{{date}}</div>
             <span>at</span>
             <input 
               type="time"
@@ -44,7 +46,9 @@
 </template>
 
 <script>
-import { required, between} from 'vuelidate/lib/validators'
+import moment from 'moment'
+import { required, between, minValue} from 'vuelidate/lib/validators'
+export const minDate = (value) => moment(value, "YYYY-MM-DD", true).isSameOrAfter(moment().format("YYYY-MM-DD"))
 export default {
   data: () => ({
     date: '',
@@ -54,7 +58,8 @@ export default {
   }),
   validations: {
     date: {
-      required
+      required,
+      minDate
     },
     time: {
       required
@@ -62,6 +67,9 @@ export default {
     duration: {
       duration: between(0, 12)
     }
+  },
+  methods: {
+
   }
 }
 </script>
