@@ -13,7 +13,7 @@
               v-model="name"
               >
               <optgroup label="Me">
-                <option selected>{{currentUser}}</option>
+                <option selected>{{current}}</option>
               </optgroup>
               <optgroup label="Others">
                 <option 
@@ -44,16 +44,13 @@
 <script>
 import { email, required } from 'vuelidate/lib/validators'
 export default {
+  props:['name', 'current'],
   data: () => ({
-    name: 'Walter Nelson',
     email: ''         
   }),
   computed: {
     users () {
       return this.$store.getters.users
-    },
-    currentUser () {
-      return this.$store.getters.currentUser.name + ' ' + this.$store.getters.currentUser.lastname
     }
   },
   validations: {

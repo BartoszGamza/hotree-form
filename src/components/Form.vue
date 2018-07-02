@@ -3,7 +3,7 @@
     <Alert v-if="submit"></Alert>
     <div v-else>
       <About></About>
-      <Coordinator></Coordinator>
+      <Coordinator :name="currentUser" :current="currentUser"></Coordinator>
       <When></When>
       <div class="submit">
         <button class="publish">PUBLISH EVENT</button>
@@ -44,6 +44,11 @@ export default {
   created() {
     this.$store.dispatch('getUser')
     this.$store.dispatch('getCategories')
+  },
+  computed: {
+    currentUser () {
+      return this.$store.getters.currentUser.name + ' ' + this.$store.getters.currentUser.lastname
+    }
   }
 }
 </script>

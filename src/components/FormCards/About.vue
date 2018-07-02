@@ -78,6 +78,7 @@
               >
             <span>Reward points for attendance</span>
           </div>
+          <div>{{InvalidIput}}</div>
         </div>
     </div>
 </template>
@@ -100,6 +101,15 @@ export default {
     },
     wordCount () {
       return 140 - this.description.length
+    },
+    InvalidIput () {
+      const wrong = 'wrong'
+      const test = 'test'
+      if(this.$v.$invalid === true){
+        return wrong
+      } else {
+        return test
+      }
     }
   },
   watch: {
