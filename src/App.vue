@@ -25,8 +25,9 @@ export default {
 
 <style lang="stylus">
 body
-  font-family: 'Roboto', sans-serif
+  font-family: 'Avenir'
   font-size 15px
+  min-width 800px
   background-color #f7f7f7
   margin 0
   color #d8d8da

@@ -79,7 +79,7 @@
             <span>Reward points for attendance</span>
             <ErrorLabel v-if="$v.reward.$error" message="Between 0 and 100"></ErrorLabel>
           </div>
-          <div>{{InvalidIput}}</div>
+          <!-- <div>{{InvalidIput}}</div> -->
         </div>
     </div>
 </template>
