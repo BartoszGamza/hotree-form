@@ -49,10 +49,10 @@
             </div>
           </div>
           <div class="line">
-            <label :class="{required: $v.fee.$invalid || show, invalid: $v.title.$error}">PAYMENT</label>
-            <input type="radio" value="false" v-model="paid_event" @click="show = false">
+            <label :class="{required: $v.fee.$invalid && show, invalid: $v.fee.$error && show}">PAYMENT</label>
+            <input type="radio" value=false v-model="paid_event" @click="show = false">
             <span>Free event</span>
-            <input type="radio" value="true" v-model="paid_event" @click="show = true">
+            <input type="radio" value=true v-model="paid_event" @click="show = true">
             <span>Paid event</span>
             <input 
               type="number" 
@@ -64,10 +64,10 @@
               :class="{invalid: $v.fee.$error}"
               >
             <span v-show="show">$</span>
-            <ErrorLabel v-if="$v.fee.$error" message="Please provide fee for event"></ErrorLabel>
+            <ErrorLabel v-if="$v.fee.$error && show" message="Please provide fee for event"></ErrorLabel>
           </div>
           <div class="line">
-            <label for="reward">REWARD</label>
+            <label for="reward" :class="{invalid: $v.reward.$error}">REWARD</label>
             <input 
               type="number" 
               id="reward"
@@ -77,6 +77,7 @@
               :class="{invalid: $v.reward.$error}"
               >
             <span>Reward points for attendance</span>
+            <ErrorLabel v-if="$v.reward.$error" message="Between 0 and 100"></ErrorLabel>
           </div>
           <div>{{InvalidIput}}</div>
         </div>
@@ -93,7 +94,8 @@ export default {
     category: '',
     paid_event: false,
     fee: '',
-    reward: ''
+    reward: '',
+    show: false
   }),
   computed: {
     categories () {
@@ -110,11 +112,6 @@ export default {
       } else {
         return test
       }
-    }
-  },
-  watch: {
-    show () {
-      return false
     }
   },
   components: {

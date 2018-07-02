@@ -26,7 +26,7 @@
             </select>
           </li>
           <li>
-            <label for="email">EMAIL</label>
+            <label for="email" :class="{invalid: $v.email.$error}">EMAIL</label>
             <input 
               type="email" 
               id="email"
@@ -35,6 +35,7 @@
               v-model="email"
               :class="{invalid: $v.email.$error}"
               >
+              <ErrorLabel v-if="$v.email.$error" message="Incorrect email format"></ErrorLabel>
           </li>
         </ul>
       </div>
@@ -42,6 +43,7 @@
 </template>
 
 <script>
+import ErrorLabel from '../../components/ErrorLabel'
 import { email, required } from 'vuelidate/lib/validators'
 export default {
   props:['name', 'current'],
@@ -52,6 +54,9 @@ export default {
     users () {
       return this.$store.getters.users
     }
+  },
+  components: {
+    ErrorLabel
   },
   validations: {
     email: {

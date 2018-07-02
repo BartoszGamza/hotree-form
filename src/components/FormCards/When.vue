@@ -32,7 +32,7 @@
             <ErrorLabel v-if="$v.date.$error || $v.time.$error" message="Provide date and time"></ErrorLabel>
           </div>
           <div class="line">
-            <label for="dur">DURATION</label>
+            <label for="dur" :class="{invalid: $v.duration.$error}">DURATION</label>
             <input 
               type="number" 
               id="dur" v-model="duration" 
@@ -41,6 +41,7 @@
               :class="{invalid: $v.duration.$error}"
               >
             <span>hour</span>
+            <ErrorLabel v-if="$v.duration.$error" message="Between 1 and 12"></ErrorLabel>
           </div>
       </div>
     </div>
@@ -72,7 +73,7 @@ export default {
       timeFormat
     },
     duration: {
-      duration: between(0, 12)
+      duration: between(1, 12)
     }
   },
   computed: {
