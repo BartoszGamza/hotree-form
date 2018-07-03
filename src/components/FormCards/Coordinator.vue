@@ -31,11 +31,12 @@
               type="email" 
               id="email"
               placeholder="Email"
-              @blur="$v.email.$touch()" 
+              @blur="updateEmail($event.target.value)"
               v-model="email"
               :class="{invalid: $v.email.$error}"
               >
               <ErrorLabel v-if="$v.email.$error" message="Incorrect email format"></ErrorLabel>
+              <div v-if="!this.$v.$invalid">valid</div>
           </li>
         </ul>
       </div>
@@ -53,6 +54,14 @@ export default {
   computed: {
     users () {
       return this.$store.getters.users
+    }
+  },
+  methods: {
+    updateEmail (value) {
+        this.$v.$touch()
+        if(!this.$v.$invalid){
+          this.$store.commit('updateCoordinator', value)
+        }
     }
   },
   components: {

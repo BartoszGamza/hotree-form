@@ -14,7 +14,21 @@ export const store = new Vuex.Store({
       lastname:''
     },
     usersList: [],
-    categories: []
+    categories: [],
+    post: {
+      title: '',
+      description: '',
+      category_id: '',
+      paid_event: '',
+      event_fee: '',
+      reward: '',
+      date: '',
+      duration: '',
+      coordinator: {
+        email: '',
+        id: ''
+      }
+    },
   },
   mutations: {
     setUsers (state, payload) {
@@ -27,6 +41,9 @@ export const store = new Vuex.Store({
     },
     setCategories (state, payload) {
       state.categories = payload
+    },
+    updateCoordinator (state, payload) {
+      state.post.coordinator.email = payload
     }
   },
   actions: {
