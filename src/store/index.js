@@ -42,6 +42,9 @@ export const store = new Vuex.Store({
     setCategories (state, payload) {
       state.categories = payload
     },
+    updateCoordinatorId (state, payload) {
+      state.post.coordinator.id = payload.id
+    },
     updateEmail (state, payload) {
       state.post.coordinator.email = payload
     },
@@ -58,7 +61,8 @@ export const store = new Vuex.Store({
       state.post.description = payload
     },
     updateCategory (state, payload) {
-      state.post.category_id = payload
+      const category_id = state.categories.find( c => c.name === payload).id
+      state.post.category_id = category_id
     },
     updatePayment (state, payload) {
       state.post.paid_event = payload

@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     currentUser () {
-      return this.$store.getters.currentUser.name + ' ' + this.$store.getters.currentUser.lastname
+      return this.$store.getters.currentUser
     }
   }
 }

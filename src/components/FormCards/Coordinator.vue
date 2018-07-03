@@ -10,15 +10,17 @@
             <label for="resp">RESPONSIBLE</label>
             <select
               id="resp" 
-              v-model="name"
+              v-model="defaultUser"
+              @blur="updateId"
               >
               <optgroup label="Me">
-                <option selected>{{current}}</option>
+                <option selected :value="current">{{current.name + ' ' + current.lastname}}</option>
               </optgroup>
               <optgroup label="Others">
                 <option 
                 v-for="user in users" 
                 :key="user.id"
+                :value="user"
                 >
                 {{user.name +' '+ user.lastname}}
                 </option>
@@ -36,7 +38,6 @@
               :class="{invalid: $v.email.$error}"
               >
               <ErrorLabel v-if="$v.email.$error" message="Incorrect email format"></ErrorLabel>
-              <div v-if="!this.$v.$invalid">valid</div>
           </li>
         </ul>
       </div>
@@ -44,26 +45,31 @@
 </template>
 
 <script>
+import Multiselect from 'vue-multiselect'
 import ErrorLabel from '../../components/ErrorLabel'
 import { email, required } from 'vuelidate/lib/validators'
 export default {
   props:['name', 'current'],
   data: () => ({
-    email: ''         
+    email: ''
   }),
   computed: {
     users () {
       return this.$store.getters.users
+    },
+    defaultUser () {
+      return this.name
     }
   },
   methods: {
     updateId () {
+      this.$store.commit('updateCoordinatorId', this.name)
     },
     updateEmail () {
-        this.$v.$touch()
-        if(!this.$v.$invalid){
-          this.$store.commit('updateEmail', this.email)
-        }
+      this.$v.$touch()
+      if(!this.$v.$invalid){
+        this.$store.commit('updateEmail', this.email)
+      }
     }
   },
   components: {
