@@ -6,40 +6,32 @@
       <Coordinator :current="currentUser"></Coordinator>
       <When></When>
       <div class="submit">
-        <button class="publish">PUBLISH EVENT</button>
+        <SubmitButton :enabled="buttonEnabled"></SubmitButton>
+        <div v-if="buttonEnabled">enabled</div>
+        <div v-else>disabled</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import SubmitButton from './SubmitButton'
 import Alert from './Alert'
 import About from './FormCards/About'
 import Coordinator from './FormCards/Coordinator'
 import When from './FormCards/When'
 export default {
   data: () => ({
-    post: {
-      title: '',
-      description: '',
-      category_id: '',
-      paid_event: '',
-      event_fee: '',
-      reward: '',
-      date: '',
-      duration: '',
-      coordinator: {
-        email: '',
-        id: ''
-      }
-    },
-    submit: false
+    submit: false,
+    buttonEnabled: false
   }),
   components: {
     About,
     Coordinator,
     When,
-    Alert
+    Alert,
+    SubmitButton
   },
   created() {
     this.$store.dispatch('getUser')
@@ -48,6 +40,15 @@ export default {
   computed: {
     currentUser () {
       return this.$store.getters.currentUser
+    },
+    ...mapState ({
+      post: state => state.post
+    }),
+    isReady () {
+      const p = this.post
+      if (p.title !== '' && p.description !== '' && p.date !== '' && p.paid_event === false || p.event_fee !== '') {
+        this.buttonEnabled = true
+      }
     }
   }
 }
@@ -148,16 +149,6 @@ hr
 .submit
   text-align center
 
-.publish
-  box-sizing border-box
-  text-align center
-  background-color #ff8e1d
-  width 164px
-  height 50px
-  color white
-  font-size 13px
-  border none
-
 .required:after
   content ' *'
   font-size 15px
@@ -188,5 +179,4 @@ hr
   left 50%
   top 50%
   transform translate(-50%, -50%)
-
 </style>

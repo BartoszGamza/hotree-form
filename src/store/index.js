@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
       title: '',
       description: '',
       category_id: '',
-      paid_event: '',
+      paid_event: false,
       event_fee: '',
       reward: '',
       date: '',

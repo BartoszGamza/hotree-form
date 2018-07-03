@@ -5,7 +5,7 @@
         <h1>New event</h1>
       </div>
     <div class="grid">
-      <Form></Form>
+        <Form></Form>
     </div>
   </div>
 </template>
