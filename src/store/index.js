@@ -43,7 +43,7 @@ export const store = new Vuex.Store({
       state.categories = payload
     },
     updateCoordinatorId (state, payload) {
-      state.post.coordinator.id = payload.id
+      state.post.coordinator.id = payload
     },
     updateEmail (state, payload) {
       state.post.coordinator.email = payload

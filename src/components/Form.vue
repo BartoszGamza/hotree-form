@@ -3,7 +3,7 @@
     <Alert v-if="submit"></Alert>
     <div v-else>
       <About></About>
-      <Coordinator :name="currentUser" :current="currentUser"></Coordinator>
+      <Coordinator :current="currentUser"></Coordinator>
       <When></When>
       <div class="submit">
         <button class="publish">PUBLISH EVENT</button>

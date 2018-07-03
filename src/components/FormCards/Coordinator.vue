@@ -10,17 +10,17 @@
             <label for="resp">RESPONSIBLE</label>
             <select
               id="resp" 
-              v-model="defaultUser"
+              v-model="selected"
               @blur="updateId"
               >
               <optgroup label="Me">
-                <option selected :value="current">{{current.name + ' ' + current.lastname}}</option>
+                <option selected :value="current.id">{{current.name + ' ' + current.lastname}}</option>
               </optgroup>
               <optgroup label="Others">
                 <option 
                 v-for="user in users" 
                 :key="user.id"
-                :value="user"
+                :value="user.id"
                 >
                 {{user.name +' '+ user.lastname}}
                 </option>
@@ -45,13 +45,13 @@
 </template>
 
 <script>
-import Multiselect from 'vue-multiselect'
 import ErrorLabel from '../../components/ErrorLabel'
 import { email, required } from 'vuelidate/lib/validators'
 export default {
-  props:['name', 'current'],
+  props:['current'],
   data: () => ({
-    email: ''
+    email: '',
+    selected: ''
   }),
   computed: {
     users () {
@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     updateId () {
-      this.$store.commit('updateCoordinatorId', this.name)
+      this.$store.commit('updateCoordinatorId', this.selected)
     },
     updateEmail () {
       this.$v.$touch()
@@ -79,6 +79,10 @@ export default {
     email: {
       email
     }
+  },
+  created () {
+    this.selected = this.current.id
+    this.updateId()
   }
 }
 </script>
