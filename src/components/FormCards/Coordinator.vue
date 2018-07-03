@@ -31,7 +31,7 @@
               type="email" 
               id="email"
               placeholder="Email"
-              @blur="updateEmail($event.target.value)"
+              @blur="updateEmail"
               v-model="email"
               :class="{invalid: $v.email.$error}"
               >
@@ -57,10 +57,12 @@ export default {
     }
   },
   methods: {
-    updateEmail (value) {
+    updateId () {
+    },
+    updateEmail () {
         this.$v.$touch()
         if(!this.$v.$invalid){
-          this.$store.commit('updateCoordinator', value)
+          this.$store.commit('updateEmail', this.email)
         }
     }
   },

@@ -42,8 +42,14 @@ export const store = new Vuex.Store({
     setCategories (state, payload) {
       state.categories = payload
     },
-    updateCoordinator (state, payload) {
+    updateEmail (state, payload) {
       state.post.coordinator.email = payload
+    },
+    updateDate (state, payload) {
+      state.post.date = payload
+    },
+    updateDuration (state, payload) {
+      state.post.duration = payload
     }
   },
   actions: {

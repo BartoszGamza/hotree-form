@@ -22,7 +22,7 @@
               v-model="time"
               min="00:00"
               max="12:00"
-              @blur="$v.time.$touch()"
+              @blur="updateDate"
               :class="{invalid: $v.time.$error}"
               >
             <input type="radio" value="AM" v-model="AMPM">
@@ -37,7 +37,7 @@
               type="number" 
               id="dur" v-model="duration" 
               placeholder="Number"
-              @input="$v.duration.$touch()"
+              @blur="updateDuration"
               :class="{invalid: $v.duration.$error}"
               >
             <span>hour</span>
@@ -76,7 +76,7 @@ export default {
       duration: between(1, 12)
     }
   },
-  computed: {
+  methods: {
     toDateTime () {
       let TimeString = this.time + ':00' + ' ' + this.AMPM
       let TimeFormat = moment(TimeString, "hh:mm A").format("HH:mm")
@@ -84,6 +84,20 @@ export default {
     },
     toSeconds () {
       return this.duration * 3600
+    },
+    updateDate () {
+      this.$v.$touch()
+      if(!this.$v.$invalid) {
+        const dateTime = this.toDateTime()
+        this.$store.commit('updateDate', dateTime)
+      }
+    },
+    updateDuration () {
+      this.$v.duration.$touch()
+      if(!this.$v.duration.$invalid) {
+        const seconds = this.toSeconds()
+        this.$store.commit('updateDuration', seconds)
+      }
     }
   }
 }
