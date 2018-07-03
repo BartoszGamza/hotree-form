@@ -25,9 +25,9 @@
               @blur="updateDate"
               :class="{invalid: $v.time.$error}"
               >
-            <input type="radio" value="AM" v-model="AMPM">
+            <input type="radio" value="AM" v-model="AMPM" @change="updateDate">
             <span>AM</span>
-            <input type="radio" value="PM" v-model="AMPM">
+            <input type="radio" value="PM" v-model="AMPM" @change="updateDate">
             <span>PM</span>
             <ErrorLabel v-if="$v.date.$error || $v.time.$error" message="Provide date and time"></ErrorLabel>
           </div>

@@ -12,7 +12,7 @@
               id="title"
               placeholder="Make it short and clear"
               v-model="title"
-              @blur="$v.title.$touch()"
+              @blur="updateTitle"
               :class="{invalid: $v.title.$error}"
               >
               <ErrorLabel v-if="$v.title.$error" message="Title cannot be empty"></ErrorLabel>
@@ -25,7 +25,7 @@
               maxlength="140"
               placeholder="Write about your event, be creative"
               v-model="description"
-              @blur="$v.description.$touch()"
+              @blur="updateDescription"
               :class="{invalid: $v.description.$error}"
               >
               </textarea>
@@ -40,6 +40,7 @@
             <select
               id="cat"
               v-model="category"
+              @change="updateCategory"
               >
               <option value="" disabled selected>Select category</option>
               <option v-for="category in categories" :key="category.id">{{category.name}}</option>
@@ -50,9 +51,9 @@
           </div>
           <div class="line">
             <label :class="{required: $v.fee.$invalid && show, invalid: $v.fee.$error && show}">PAYMENT</label>
-            <input type="radio" value=false v-model="paid_event" @click="show = false">
+            <input type="radio" value=false v-model="paid_event" @click="show = false" @change="updatePayment">
             <span>Free event</span>
-            <input type="radio" value=true v-model="paid_event" @click="show = true">
+            <input type="radio" value=true v-model="paid_event" @click="show = true" @change="updatePayment">
             <span>Paid event</span>
             <input 
               type="number" 
@@ -60,7 +61,7 @@
               id="fee"
               placeholder="Fee"
               v-model="fee"
-              @input="$v.fee.$touch()" 
+              @blur="updateFee" 
               :class="{invalid: $v.fee.$error}"
               >
             <span v-show="show">$</span>
@@ -73,13 +74,12 @@
               id="reward"
               placeholder="Number"
               v-model="reward" 
-              @blur="$v.reward.$touch()" 
+              @blur="updateReward" 
               :class="{invalid: $v.reward.$error}"
               >
             <span>Reward points for attendance</span>
             <ErrorLabel v-if="$v.reward.$error" message="Between 0 and 100"></ErrorLabel>
           </div>
-          <!-- <div>{{InvalidIput}}</div> -->
         </div>
     </div>
 </template>
@@ -103,15 +103,6 @@ export default {
     },
     wordCount () {
       return 140 - this.description.length
-    },
-    InvalidIput () {
-      const wrong = 'wrong'
-      const test = 'test'
-      if(this.$v.$invalid === true){
-        return wrong
-      } else {
-        return test
-      }
     }
   },
   components: {
@@ -130,6 +121,38 @@ export default {
     },
     reward: {
       reward: between(0, 100)
+    }
+  },
+  methods: {
+    updateTitle () {
+      this.$v.title.$touch()
+      if(!this.$v.title.$invalid) {
+        this.$store.commit('updateTitle', this.title)
+      }
+    },
+    updateDescription () {
+      this.$v.description.$touch()
+      if (!this.$v.description.$invalid) { 
+        this.$store.commit('updateDescription', this.description)
+      }
+    },
+    updateCategory () {
+      this.$store.commit('updateCategory', this.category)
+    },
+    updatePayment () {
+      this.$store.commit('updatePayment', this.paid_event)
+    },
+    updateFee () {
+      this.$v.fee.$touch()
+      if(!this.$v.fee.$invalid) {
+        this.$store.commit('updateFee', this.fee) 
+      }
+    },
+    updateReward () {
+      this.$v.reward.$touch()
+      if (!this.$v.reward.$invalid) {
+        this.$store.commit('updateReward', this.reward)
+      }
     }
   }
 }

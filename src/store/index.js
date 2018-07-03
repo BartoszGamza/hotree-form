@@ -50,6 +50,24 @@ export const store = new Vuex.Store({
     },
     updateDuration (state, payload) {
       state.post.duration = payload
+    },
+    updateTitle (state, payload) {
+      state.post.title = payload
+    },
+    updateDescription (state, payload) {
+      state.post.description = payload
+    },
+    updateCategory (state, payload) {
+      state.post.category_id = payload
+    },
+    updatePayment (state, payload) {
+      state.post.paid_event = payload
+    },
+    updateFee (state, payload) {
+      state.post.event_fee = payload
+    },
+    updateReward (state, payload) {
+      state.post.reward = payload
     }
   },
   actions: {
