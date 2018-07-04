@@ -67,7 +67,7 @@
               :class="{invalid: $v.fee.$error}"
               >
             <span v-show="show">$</span>
-            <ErrorLabel v-if="$v.fee.$error && show" message="Please provide fee for event"></ErrorLabel>
+            <ErrorLabel v-if="$v.fee.$error && show" message="Please provide fee"></ErrorLabel>
           </div>
           <div class="line">
             <label for="reward" :class="{invalid: $v.reward.$error}">REWARD</label>
@@ -173,7 +173,7 @@ export default {
 .bottomline
   width 450px;
   display inline-block
-  padding-left 120px
+  padding-left 125px
   font-style italic
   font-size 12px
   color #cccccc

@@ -11,9 +11,10 @@
               id="resp" 
               v-model="selected"
               @blur="updateId"
+              @focus="prefix = false"
               >
               <optgroup label="Me">
-                <option selected :value="current.id">{{current.name + ' ' + current.lastname}}</option>
+                <option :value="current.id">{{current.name + ' ' + current.lastname}}</option>
               </optgroup>
               <optgroup label="Others">
                 <option 
@@ -62,6 +63,9 @@ export default {
   methods: {
     updateId () {
       this.$store.commit('updateCoordinatorId', this.selected)
+      if (this.selected === this.current.id) {
+        this.prefix = true
+      }
     },
     updateEmail () {
       this.$v.$touch()

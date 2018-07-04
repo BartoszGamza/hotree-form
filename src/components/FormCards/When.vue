@@ -8,7 +8,8 @@
         
           <div class="line">
             <label for="time" :class="{required: $v.date.$invalid || $v.time.$invalid, invalid: $v.date.$error || $v.time.$error }">STARTS ON</label>
-            <input 
+            <div id="noJump">
+              <input 
               type="text" 
               id="date"
               v-model="date"
@@ -17,6 +18,8 @@
               @blur="$v.date.$touch()"
               :class="{invalid: $v.date.$error}"
               >
+            </div>
+            
             
             <span>at</span>
             <input 
@@ -117,8 +120,11 @@ export default {
   
 #date
   width 150px
+  vertical-align top
+  max-height 29px
 #time
   width 75px
-  margin-right 5px 
-
+  margin-right 5px
+  max-height 29px
+  vertical-align top
 </style>

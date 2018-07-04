@@ -191,6 +191,5 @@ hr
   left 50%
   top 50%
   transform translate(-50%, -50%)
-[type ="date"], [type ="time"]
-  vertical-align top
+
 </style>
