@@ -95,6 +95,7 @@ export const store = new Vuex.Store({
       commit('setCategories', obj)
     },
     submitEvent ({commit, state}) {
+      console.log(state.post)
       commit('submission')
     }
   },
