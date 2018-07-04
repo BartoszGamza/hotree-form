@@ -96,15 +96,6 @@ export const store = new Vuex.Store({
       commit('setCategories', obj)
     },
     submitEvent ({commit, state}) {
-      // console.log(state.post)
-      // console.log('title ' + typeof(state.post.title))
-      // console.log('paid_event ' + typeof(state.post.paid_event))
-      // console.log('event_fee ' + typeof(state.post.event_fee))
-      // console.log('reward '+ typeof(state.post.reward))
-      // console.log('date ' + typeof(state.post.date))
-      // console.log('duration ' + typeof(state.post.duration))
-      // console.log('coordinator.email ' + typeof(state.post.coordinator.email))
-      // console.log('coordinator.id ' + typeof(state.post.coordinator.id))
       commit('submission')
     }
   },

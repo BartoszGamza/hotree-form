@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Alert v-if="submit" message="Event has been created"></Alert>
+    <success-alert v-if="submitted" message="Event has been created"></success-alert>
     <div v-else>
       <form-about></form-about>
       <form-coordinator :current="currentUser"></form-coordinator>
@@ -14,7 +14,7 @@
 
 <script>
 import SubmitButton from './UI_elements/SubmitButton'
-import FormAlert from './UI_elements/SuccessAlert'
+import SuccessAlert from './UI_elements/SuccessAlert'
 import FormAbout from './FormCards/FormAbout'
 import FormCoordinator from './FormCards/FormCoordinator'
 import FormWhen from './FormCards/FormWhen'
@@ -27,7 +27,7 @@ export default {
     FormAbout,
     FormCoordinator,
     FormWhen,
-    FormAlert,
+    SuccessAlert,
     SubmitButton
   },
   created () {
@@ -41,7 +41,7 @@ export default {
     post () {
       return this.$store.getters.post
     },
-    submit () {
+    submitted () {
       return this.$store.getters.submitted
     }
   },
