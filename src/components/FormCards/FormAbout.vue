@@ -56,7 +56,7 @@
               @change="updateCategory"
               >
               <option value="" disabled selected>Select category</option>
-              <option v-for="category in categories" :key="category.id">{{category.name}}</option>
+              <option v-for="category in categories" :value="category.id" :key="category.id">{{category.name}}</option>
             </select>
             <div class="bottomline">
               Descibes topic and people who should be interested in this event

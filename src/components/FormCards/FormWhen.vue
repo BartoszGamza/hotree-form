@@ -37,13 +37,13 @@
               type="radio" 
               value="AM" 
               v-model="AMPM" 
-              @change="updateDate">
+              @click="updateDate">
             <span>AM</span>
             <input 
               type="radio" 
               value="PM" 
               v-model="AMPM" 
-              @change="updateDate">
+              @click="updateDate">
             <span>PM</span>
             <error-label 
               v-if="$v.date.$error || $v.time.$error" 

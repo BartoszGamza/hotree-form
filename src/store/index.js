@@ -53,8 +53,7 @@ export const store = new Vuex.Store({
       state.post.description = String(payload)
     },
     updateCategory (state, payload) {
-      const category_id = state.categories.find( c => c.name === payload).id
-      state.post.category_id = parseInt(category_id)
+      state.post.category_id = parseInt(payload)
     },
     updatePayment (state, payload) {
       if (payload === 'true'){
