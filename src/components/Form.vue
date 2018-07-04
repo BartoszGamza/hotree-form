@@ -106,6 +106,7 @@ li
   display inline-block
   border 1px solid #d8d8da
   border-radius 2px
+  vertical-align middle
   background-color white
   background-image none
   -webkit-appearance none
@@ -190,6 +191,6 @@ hr
   left 50%
   top 50%
   transform translate(-50%, -50%)
-[type ="date"], [type ="time"], [type ="number"], [type ="text"]
-  vertical-align middle
+[type ="date"], [type ="time"]
+  vertical-align top
 </style>

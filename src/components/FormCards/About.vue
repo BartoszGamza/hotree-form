@@ -52,14 +52,16 @@
           <div class="line">
             <label :class="{required: $v.fee.$invalid && show, invalid: $v.fee.$error && show}">PAYMENT</label>
             <input type="radio" value=false v-model="paid_event" @click="show = false" @change="updatePayment">
-            <span>Free event</span>
+            <div id="noJump"><span id="noJumpSpan">Free event</span></div>
             <input type="radio" value=true v-model="paid_event" @click="show = true" @change="updatePayment">
-            <span>Paid event</span>
+            <div id="noJump"><span id="noJumpSpan">Paid event</span></div>
             <input 
               type="number" 
               v-show="show" 
               id="fee"
               placeholder="Fee"
+              min="0"
+              max="100"
               v-model="fee"
               @blur="updateFee" 
               :class="{invalid: $v.fee.$error}"
@@ -70,7 +72,9 @@
           <div class="line">
             <label for="reward" :class="{invalid: $v.reward.$error}">REWARD</label>
             <input 
-              type="number" 
+              type="number"
+              min="0"
+              max="100"
               id="reward"
               placeholder="Number"
               v-model="reward" 
@@ -173,6 +177,12 @@ export default {
   font-style italic
   font-size 12px
   color #cccccc
+#noJump
+  min-height 32px
+  display inline-block
+  vertical-align middle
+#noJumpSpan
+  vertical-align -6px
 </style>
 
 

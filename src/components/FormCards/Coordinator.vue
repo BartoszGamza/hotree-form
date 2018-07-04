@@ -5,8 +5,7 @@
         <hr>
       </div>
       <div class="card-form">
-        <ul>
-          <li>
+        <div class="line">
             <label for="resp">RESPONSIBLE</label>
             <select
               id="resp" 
@@ -26,8 +25,8 @@
                 </option>
               </optgroup>
             </select>
-          </li>
-          <li>
+        </div>
+        <div class="line">
             <label for="email" :class="{invalid: $v.email.$error}">EMAIL</label>
             <input 
               type="email" 
@@ -38,8 +37,7 @@
               :class="{invalid: $v.email.$error}"
               >
               <ErrorLabel v-if="$v.email.$error" message="Incorrect email format"></ErrorLabel>
-          </li>
-        </ul>
+        </div>
       </div>
     </div>
 </template>

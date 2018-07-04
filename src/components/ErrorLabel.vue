@@ -17,13 +17,14 @@ export default {
   background: #ffb2b2 !important
   color white
   font-weight 300
-  font-size 11px 
-  padding: 5px !important
+  font-size 12px 
+  padding: 3px !important
   border-radius: 0 !important
   position: relative 
   display: inline-block !important
   margin-left 5px
-  bottom 3px
+  bottom 0px
+  top 0px
 
 .errorLabel::before
   content: ''

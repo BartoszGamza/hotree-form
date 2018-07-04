@@ -119,5 +119,6 @@ export default {
   width 150px
 #time
   width 75px
+  margin-right 5px 
 
 </style>
