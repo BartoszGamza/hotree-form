@@ -6,10 +6,7 @@
       <Coordinator :current="currentUser"></Coordinator>
       <When></When>
       <div class="submit">
-        <SubmitButton :enabled="buttonEnabled"></SubmitButton>
-        <div v-if="buttonEnabled">enabled</div>
-        <div v-else>disabled</div>
-        <button @click="watchtest = !watchtest">watchtest</button>
+        <SubmitButton @click.native="watchStore"></SubmitButton>
       </div>
     </div>
   </div>
@@ -25,8 +22,6 @@ import When from './FormCards/When'
 export default {
   data () {
     return {
-      buttonEnabled: true,
-      watchtest: false
     }
   },
   components: {
@@ -66,6 +61,16 @@ export default {
     currentUser () {
       if (this.currentUser.id == '3') {
         console.log('userid3')
+      }
+    }
+  },
+  methods: {
+    watchStore () {
+      const p = this.post
+      if(p.title !== '' && p.description !== '' && p.date !== '' && p.paid_event === false || p.title !== '' && p.description !== '' && p.date !== '' && p.event_fee !== '') {
+        this.$store.dispatch('submitEvent')
+      } else {
+        console.log('nope')
       }
     }
   }

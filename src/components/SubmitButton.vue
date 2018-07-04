@@ -1,17 +1,12 @@
 <template>
   <div>
-    <button id="publish" @click="submit" :class="{disabled: !enabled}">PUBLISH EVENT</button>
+    <button id="publish">PUBLISH EVENT</button>
   </div>
 </template>
 
 <script>
 export default {
-  props:['enabled'],
-  methods: {
-    submit () {
-      this.$store.dispatch('submitEvent')
-    }
-  }
+
 }
 </script>
 
