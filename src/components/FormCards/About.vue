@@ -169,6 +169,7 @@ export default {
 .counter
   display inline-block
   float right
+  padding-right 5px
 
 .bottomline
   width 450px;

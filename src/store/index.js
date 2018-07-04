@@ -46,37 +46,41 @@ export const store = new Vuex.Store({
     submission (state) {
       state.submitted = true
     },
-    updateCoordinatorId (state, payload) {
-      state.post.coordinator.id = payload
-    },
-    updateEmail (state, payload) {
-      state.post.coordinator.email = payload
-    },
-    updateDate (state, payload) {
-      state.post.date = payload
-    },
-    updateDuration (state, payload) {
-      state.post.duration = payload
-    },
     updateTitle (state, payload) {
-      state.post.title = payload
+      state.post.title = String(payload)
     },
     updateDescription (state, payload) {
-      state.post.description = payload
+      state.post.description = String(payload)
     },
     updateCategory (state, payload) {
       const category_id = state.categories.find( c => c.name === payload).id
-      state.post.category_id = category_id
+      state.post.category_id = parseInt(category_id)
     },
     updatePayment (state, payload) {
-      state.post.paid_event = payload
+      if (payload === 'true'){
+        state.post.paid_event = true
+      } else {
+        state.post.paid_event = false
+      }
     },
     updateFee (state, payload) {
-      state.post.event_fee = payload
+      state.post.event_fee = parseInt(payload)
     },
     updateReward (state, payload) {
-      state.post.reward = payload
-    }
+      state.post.reward = parseInt(payload)
+    },
+    updateCoordinatorId (state, payload) {
+      state.post.coordinator.id = parseInt(payload)
+    },
+    updateEmail (state, payload) {
+      state.post.coordinator.email = String(payload)
+    },
+    updateDate (state, payload) {
+      state.post.date = String(payload)
+    },
+    updateDuration (state, payload) {
+      state.post.duration = parseInt(payload)
+    },
   },
   actions: {
     getUser ({commit, state}) {
@@ -92,7 +96,15 @@ export const store = new Vuex.Store({
       commit('setCategories', obj)
     },
     submitEvent ({commit, state}) {
-      console.log(state.post)
+      // console.log(state.post)
+      // console.log('title ' + typeof(state.post.title))
+      // console.log('paid_event ' + typeof(state.post.paid_event))
+      // console.log('event_fee ' + typeof(state.post.event_fee))
+      // console.log('reward '+ typeof(state.post.reward))
+      // console.log('date ' + typeof(state.post.date))
+      // console.log('duration ' + typeof(state.post.duration))
+      // console.log('coordinator.email ' + typeof(state.post.coordinator.email))
+      // console.log('coordinator.id ' + typeof(state.post.coordinator.id))
       commit('submission')
     }
   },
