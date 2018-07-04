@@ -15,6 +15,7 @@ export const store = new Vuex.Store({
     },
     usersList: [],
     categories: [],
+    submitted: false,
     post: {
       title: '',
       description: '',
@@ -41,6 +42,9 @@ export const store = new Vuex.Store({
     },
     setCategories (state, payload) {
       state.categories = payload
+    },
+    submission (state) {
+      state.submitted = true
     },
     updateCoordinatorId (state, payload) {
       state.post.coordinator.id = payload
@@ -86,6 +90,10 @@ export const store = new Vuex.Store({
     getCategories ({commit}) {
       let obj = Categories
       commit('setCategories', obj)
+    },
+    submitEvent ({commit, state}) {
+      console.log(state.post)
+      commit('submission')
     }
   },
   getters: {
@@ -97,6 +105,12 @@ export const store = new Vuex.Store({
     },
     currentUser (state) {
       return state.currentUser
+    },
+    post (state) {
+      return state.post
+    },
+    submitted (state) {
+      return state.submitted
     }
   }
 })

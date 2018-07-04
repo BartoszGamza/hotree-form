@@ -9,6 +9,7 @@
         <SubmitButton :enabled="buttonEnabled"></SubmitButton>
         <div v-if="buttonEnabled">enabled</div>
         <div v-else>disabled</div>
+        <button @click="watchtest = !watchtest">watchtest</button>
       </div>
     </div>
   </div>
@@ -22,10 +23,12 @@ import About from './FormCards/About'
 import Coordinator from './FormCards/Coordinator'
 import When from './FormCards/When'
 export default {
-  data: () => ({
-    submit: false,
-    buttonEnabled: false
-  }),
+  data () {
+    return {
+      buttonEnabled: true,
+      watchtest: false
+    }
+  },
   components: {
     About,
     Coordinator,
@@ -33,7 +36,7 @@ export default {
     Alert,
     SubmitButton
   },
-  created() {
+  created () {
     this.$store.dispatch('getUser')
     this.$store.dispatch('getCategories')
   },
@@ -41,13 +44,28 @@ export default {
     currentUser () {
       return this.$store.getters.currentUser
     },
-    ...mapState ({
-      post: state => state.post
-    }),
-    isReady () {
-      const p = this.post
-      if (p.title !== '' && p.description !== '' && p.date !== '' && p.paid_event === false || p.event_fee !== '') {
+    post () {
+      return this.$store.getters.post
+    },
+    submit () {
+      return this.$store.getters.submitted
+    }
+  },
+  watch: {
+    post () {
+      if (this.post.title === 'test') {
+        console.log('it fired')
         this.buttonEnabled = true
+      }
+    },
+    watchtest () {
+      if (this.watchtest !== false) {
+        this.buttonEnabled = true
+      }
+    },
+    currentUser () {
+      if (this.currentUser.id == '3') {
+        console.log('userid3')
       }
     }
   }
