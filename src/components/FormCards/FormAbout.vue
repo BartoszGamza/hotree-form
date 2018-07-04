@@ -6,7 +6,10 @@
       </div>
       <div class="card-form">
           <div class="line">
-            <label for="title" :class="{required: $v.title.$invalid, invalid: $v.title.$error}">TITLE</label>
+            <label for="title" 
+              :class="{required: $v.title.$invalid, invalid: $v.title.$error}">
+              TITLE
+            </label>
             <input 
               type="text"
               id="title"
@@ -15,10 +18,17 @@
               @blur="updateTitle"
               :class="{invalid: $v.title.$error}"
               >
-              <ErrorLabel v-if="$v.title.$error" message="Title cannot be empty"></ErrorLabel>
+              <error-label 
+                v-if="$v.title.$error" 
+                message="Title cannot be empty">
+              </error-label>
           </div>
           <div class="line">
-            <label for="desc" :class="{required: $v.description.$invalid, invalid: $v.description.$error}">DESCRIPTION</label>
+            <label 
+              for="desc" 
+              :class="{required: $v.description.$invalid, invalid: $v.description.$error}">
+              DESCRIPTION
+            </label>
             <textarea 
               name="desc" 
               id="desc"
@@ -28,8 +38,11 @@
               @blur="updateDescription"
               :class="{invalid: $v.description.$error}"
               >
-              </textarea>
-              <ErrorLabel v-if="$v.description.$error" message="Fill the description"></ErrorLabel>
+            </textarea>
+              <error-label 
+                v-if="$v.description.$error" 
+                message="Fill the description">
+              </error-label>
             <div class="bottomline">
               <div class="comment">Max length 140 characters</div>
               <div class="counter">{{wordCount}}</div>
@@ -50,11 +63,28 @@
             </div>
           </div>
           <div class="line">
-            <label :class="{required: $v.fee.$invalid && show, invalid: $v.fee.$error && show}">PAYMENT</label>
-            <input type="radio" value=false v-model="paid_event" @click="show = false" @change="updatePayment">
-            <div id="noJump"><span id="noJumpSpan">Free event</span></div>
-            <input type="radio" value=true v-model="paid_event" @click="show = true" @change="updatePayment">
-            <div id="noJump"><span id="noJumpSpan">Paid event</span></div>
+            <label 
+              :class="{required: $v.fee.$invalid && show, invalid: $v.fee.$error && show}">
+              PAYMENT
+            </label>
+            <input 
+              type="radio" 
+              value=false 
+              v-model="paid_event" 
+              @click="show = false" 
+              @change="updatePayment">
+            <div id="noJump">
+              <span id="noJumpSpan">Free event</span>
+            </div>
+            <input 
+              type="radio" 
+              value=true 
+              v-model="paid_event" 
+              @click="show = true" 
+              @change="updatePayment">
+            <div id="noJump">
+              <span id="noJumpSpan">Paid event</span>
+            </div>
             <input 
               type="number" 
               v-show="show" 
@@ -67,10 +97,16 @@
               :class="{invalid: $v.fee.$error}"
               >
             <span v-show="show">$</span>
-            <ErrorLabel v-if="$v.fee.$error && show" message="Please provide fee"></ErrorLabel>
+            <error-label 
+              v-if="$v.fee.$error && show" 
+              message="Please provide fee">
+            </error-label>
           </div>
           <div class="line">
-            <label for="reward" :class="{invalid: $v.reward.$error}">REWARD</label>
+            <label for="reward" 
+              :class="{invalid: $v.reward.$error}">
+              REWARD
+            </label>
             <input 
               type="number"
               min="0"
@@ -82,15 +118,18 @@
               :class="{invalid: $v.reward.$error}"
               >
             <span>Reward points for attendance</span>
-            <ErrorLabel v-if="$v.reward.$error" message="Between 0 and 100"></ErrorLabel>
+            <error-label 
+              v-if="$v.reward.$error" 
+              message="Between 0 and 100">
+            </error-label>
           </div>
         </div>
     </div>
 </template>
 
 <script>
-import ErrorLabel from '../../components/ErrorLabel'
-import { required, requiredIf, between, numeric, maxValue } from 'vuelidate/lib/validators'
+import ErrorLabel from '../../components/UI_elements/ErrorLabel'
+import { required, requiredIf, between } from 'vuelidate/lib/validators'
 export default {
   data: () => ({
     title: '',
@@ -178,10 +217,12 @@ export default {
   font-style italic
   font-size 12px
   color #cccccc
+
 #noJump
   min-height 32px
   display inline-block
   vertical-align middle
+
 #noJumpSpan
   vertical-align -6px
 </style>

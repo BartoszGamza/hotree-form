@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div class="top"></div>
-      <div class="header">
-        <div class="header-wrapper">
-          <h1>New event</h1>
-        </div>
+    <div class="header">
+      <div class="header-wrapper">
+        <h1>New event</h1>
       </div>
+    </div>
     <div class="grid">
-        <Form></Form>
+      <Form></Form>
     </div>
   </div>
 </template>
@@ -34,6 +34,7 @@ body
   margin 0
   color #d8d8da
   overflow-y scroll
+
 .top
   position fixed
   background-color #1e3b68 
@@ -42,6 +43,7 @@ body
   top 0
   left 0
   right 0
+
 .header
   background-color #355990
   color white
@@ -53,10 +55,12 @@ body
   left 0
   right 0
   box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+
 .grid, .header-wrapper
   position relative
   max-width 800px
   margin 0 auto
+
 h1
   font-weight 100
   padding-left 40px

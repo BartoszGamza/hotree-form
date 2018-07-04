@@ -11,18 +11,19 @@
               id="resp" 
               v-model="selected"
               @blur="updateId"
-              @focus="prefix = false"
-              >
+              @focus="prefix = false">
               <optgroup label="Me">
-                <option :value="current.id">{{current.name + ' ' + current.lastname}}</option>
+                <option 
+                  :value="current.id">
+                  {{current.name + ' ' + current.lastname}}
+                </option>
               </optgroup>
               <optgroup label="Others">
                 <option 
-                v-for="user in users" 
-                :key="user.id"
-                :value="user.id"
-                >
-                {{user.name +' '+ user.lastname}}
+                  v-for="user in users" 
+                  :key="user.id"
+                  :value="user.id">
+                  {{user.name +' '+ user.lastname}}
                 </option>
               </optgroup>
             </select>
@@ -37,14 +38,14 @@
               v-model="email"
               :class="{invalid: $v.email.$error}"
               >
-              <ErrorLabel v-if="$v.email.$error" message="Incorrect email format"></ErrorLabel>
+              <error-label v-if="$v.email.$error" message="Incorrect email format"></error-label>
         </div>
       </div>
     </div>
 </template>
 
 <script>
-import ErrorLabel from '../../components/ErrorLabel'
+import ErrorLabel from '../../components/UI_elements/ErrorLabel'
 import { email, required } from 'vuelidate/lib/validators'
 export default {
   props:['current'],
@@ -89,6 +90,3 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-
-</style>

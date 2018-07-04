@@ -2,32 +2,32 @@
   <div class="container">
     <Alert v-if="submit" message="Event has been created"></Alert>
     <div v-else>
-      <About></About>
-      <Coordinator :current="currentUser"></Coordinator>
-      <When></When>
+      <form-about></form-about>
+      <form-coordinator :current="currentUser"></form-coordinator>
+      <form-when></form-when>
       <div class="submit">
-        <SubmitButton @click.native="submitEvent"></SubmitButton>
+        <submit-button @click.native="submitEvent"></submit-button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import SubmitButton from './SubmitButton'
-import Alert from './Alert'
-import About from './FormCards/About'
-import Coordinator from './FormCards/Coordinator'
-import When from './FormCards/When'
+import SubmitButton from './UI_elements/SubmitButton'
+import FormAlert from './UI_elements/SuccessAlert'
+import FormAbout from './FormCards/FormAbout'
+import FormCoordinator from './FormCards/FormCoordinator'
+import FormWhen from './FormCards/FormWhen'
 export default {
   data () {
     return {
     }
   },
   components: {
-    About,
-    Coordinator,
-    When,
-    Alert,
+    FormAbout,
+    FormCoordinator,
+    FormWhen,
+    FormAlert,
     SubmitButton
   },
   created () {

@@ -5,9 +5,11 @@
         <hr>
       </div>
       <div class="card-form">
-        
           <div class="line">
-            <label for="time" :class="{required: $v.date.$invalid || $v.time.$invalid, invalid: $v.date.$error || $v.time.$error }">STARTS ON</label>
+            <label for="time" 
+              :class="{required: $v.date.$invalid || $v.time.$invalid, invalid: $v.date.$error || $v.time.$error }">
+              STARTS ON
+            </label>
             <div id="noJump">
               <input 
               type="text" 
@@ -19,8 +21,6 @@
               :class="{invalid: $v.date.$error}"
               >
             </div>
-            
-            
             <span>at</span>
             <input 
               type="text"
@@ -33,14 +33,28 @@
               @blur="updateDate"
               :class="{invalid: $v.time.$error}"
               >
-            <input type="radio" value="AM" v-model="AMPM" @change="updateDate">
+            <input 
+              type="radio" 
+              value="AM" 
+              v-model="AMPM" 
+              @change="updateDate">
             <span>AM</span>
-            <input type="radio" value="PM" v-model="AMPM" @change="updateDate">
+            <input 
+              type="radio" 
+              value="PM" 
+              v-model="AMPM" 
+              @change="updateDate">
             <span>PM</span>
-            <ErrorLabel v-if="$v.date.$error || $v.time.$error" message="Provide date and time"></ErrorLabel>
+            <error-label 
+              v-if="$v.date.$error || $v.time.$error" 
+              message="Provide date and time">
+            </error-label>
           </div>
           <div class="line">
-            <label for="dur" :class="{invalid: $v.duration.$error}">DURATION</label>
+            <label for="dur" 
+              :class="{invalid: $v.duration.$error}">
+              DURATION
+            </label>
             <input 
               type="number" 
               id="dur" v-model="duration" 
@@ -49,18 +63,23 @@
               :class="{invalid: $v.duration.$error}"
               >
             <span>hour</span>
-            <ErrorLabel v-if="$v.duration.$error" message="Between 1 and 12"></ErrorLabel>
+            <error-label 
+              v-if="$v.duration.$error" 
+              message="Between 1 and 12">
+            </error-label>
           </div>
       </div>
     </div>
 </template>
 
 <script>
-import ErrorLabel from '../../components/ErrorLabel'
+import ErrorLabel from '../../components/UI_elements/ErrorLabel'
 import moment from 'moment'
 import { required, between, helpers} from 'vuelidate/lib/validators'
+
 export const minDate = (value) => moment(value, "YYYY-MM-DD", true).isSameOrAfter(moment().format("YYYY-MM-DD"))
 export const timeFormat = helpers.regex('timeFormat', /^(1[0-2]|0?[1-9]):[0-5][0-9]*$/)
+
 export default {
   data: () => ({
     date: '',
