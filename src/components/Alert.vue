@@ -1,21 +1,23 @@
 <template>
+  <transition name="fade">
     <div class="alert">
       <div class="alert-heading">
         Success
       </div>
       <div class="alert-message">
-        Event has been created.
+        {{message}}
       </div>
     </div>
+  </transition>
 </template>
 
 <script>
 export default {
-  
+  props: ['message']
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .alert
   box-sizing border-box
   margin-left  auto
@@ -36,4 +38,10 @@ export default {
 .alert-message
   color #7c7c7c
   margin 10px 0 10px 0
+
+.fade-enter-active, .fade-leave-active 
+  transition opacity .5s
+
+.fade-enter, .fade-leave-to 
+  opacity 0
 </style>

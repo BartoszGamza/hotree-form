@@ -2,7 +2,9 @@
   <div id="app">
     <div class="top"></div>
       <div class="header">
-        <h1>New event</h1>
+        <div class="header-wrapper">
+          <h1>New event</h1>
+        </div>
       </div>
     <div class="grid">
         <Form></Form>
@@ -44,7 +46,6 @@ body
   background-color #355990
   color white
   z-index 10
-  padding-left 15%
   position fixed
   padding-top 15px
   height 72px
@@ -52,10 +53,12 @@ body
   left 0
   right 0
   box-shadow 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
-.grid
+.grid, .header-wrapper
   position relative
   max-width 800px
   margin 0 auto
 h1
-  font-weight 100 
+  font-weight 100
+  padding-left 40px
 </style>
+

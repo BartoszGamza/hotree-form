@@ -1,7 +1,9 @@
 <template>
-  <div class="errorLabel">
+  <transition name="fade">
+    <div class="errorLabel">
     {{message}}
-  </div>
+    </div>
+  </transition>  
 </template>
 
 <script>
@@ -14,7 +16,7 @@ export default {
 .errorLabel
   background: #ffb2b2 !important
   color white
-  font-weight 100
+  font-weight 300
   font-size 11px 
   padding: 5px !important
   border-radius: 0 !important
@@ -33,4 +35,11 @@ export default {
   position: absolute  
   left: -5px
   bottom: 6px 
+
+.fade-enter-active, .fade-leave-active 
+  transition opacity 1s
+
+.fade-enter, .fade-leave-to 
+  opacity 0
+
 </style>

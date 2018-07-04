@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Alert v-if="submit"></Alert>
+    <Alert v-if="submit" message="Event has been created"></Alert>
     <div v-else>
       <About></About>
       <Coordinator :current="currentUser"></Coordinator>
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import SubmitButton from './SubmitButton'
 import Alert from './Alert'
 import About from './FormCards/About'
@@ -46,31 +45,14 @@ export default {
       return this.$store.getters.submitted
     }
   },
-  watch: {
-    post () {
-      if (this.post.title === 'test') {
-        console.log('it fired')
-        this.buttonEnabled = true
-      }
-    },
-    watchtest () {
-      if (this.watchtest !== false) {
-        this.buttonEnabled = true
-      }
-    },
-    currentUser () {
-      if (this.currentUser.id == '3') {
-        console.log('userid3')
-      }
-    }
-  },
   methods: {
     watchStore () {
       const p = this.post
-      if(p.title !== '' && p.description !== '' && p.date !== '' && p.paid_event === false || p.title !== '' && p.description !== '' && p.date !== '' && p.event_fee !== '') {
+      if(p.title !== '' && p.description !== '' 
+      && p.date !== '' && p.paid_event === false 
+      || p.title !== '' && p.description !== '' 
+      && p.date !== '' && p.event_fee !== '') {
         this.$store.dispatch('submitEvent')
-      } else {
-        console.log('nope')
       }
     }
   }
@@ -115,7 +97,7 @@ li
 
 #title, #desc, #email
   display inline
-  width 440px
+  width 432px
 
 #title, #desc, #email, #resp, #cat, #reward, #time, #dur, #fee, #date
   font-size 15px
@@ -134,6 +116,12 @@ li
     outline none
   &.invalid
     border 1px solid #ffb2b2
+
+#desc
+  width 450px
+
+#cat
+  width 454px
 
 #resp, #cat
   width 448px
