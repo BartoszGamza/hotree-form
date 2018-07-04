@@ -6,7 +6,7 @@
       <Coordinator :current="currentUser"></Coordinator>
       <When></When>
       <div class="submit">
-        <SubmitButton @click.native="watchStore"></SubmitButton>
+        <SubmitButton @click.native="submitEvent"></SubmitButton>
       </div>
     </div>
   </div>
@@ -46,7 +46,7 @@ export default {
     }
   },
   methods: {
-    watchStore () {
+    submitEvent () {
       const p = this.post
       if(p.title !== '' && p.description !== '' 
       && p.date !== '' && p.paid_event === false 
@@ -190,4 +190,6 @@ hr
   left 50%
   top 50%
   transform translate(-50%, -50%)
+[type ="date"], [type ="time"], [type ="number"], [type ="text"]
+  vertical-align middle
 </style>

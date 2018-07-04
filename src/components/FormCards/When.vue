@@ -9,17 +9,22 @@
           <div class="line">
             <label for="time" :class="{required: $v.date.$invalid || $v.time.$invalid, invalid: $v.date.$error || $v.time.$error }">STARTS ON</label>
             <input 
-              type="date" 
+              type="text" 
               id="date"
               v-model="date"
+              onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'"
+              placeholder="dd/mm/yyyy"
               @blur="$v.date.$touch()"
               :class="{invalid: $v.date.$error}"
               >
+            
             <span>at</span>
             <input 
-              type="time"
+              type="text"
               id="time" 
               v-model="time"
+              onfocus="(this.type='time')" onblur="if(!this.value)this.type='text'"
+              placeholder="--:--"
               min="00:00"
               max="12:00"
               @blur="updateDate"
@@ -104,5 +109,15 @@ export default {
 </script>
 
 <style lang="stylus">
+.datepicker
+  display inline-block
+  appearance none
+  -webkit-appearance none
+  -moz-appearance none 
+  
+#date
+  width 150px
+#time
+  width 75px
 
 </style>
